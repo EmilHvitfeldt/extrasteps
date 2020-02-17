@@ -1,0 +1,19 @@
+Package: extrasteps
+Title: More Steps for the 'recipes' Package
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Emil",
+           family = "Hvitfeldt",
+           role = c("aut", "cre"),
+           email = "emilhhvitfeldt@gmail.com",
+           comment = c(ORCID = "0000-0002-0679-1945"))
+Description: Contains additional steps for the 'recipes' package.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.0.2
+Imports: 
+    recipes,
+    tibble,
+    magrittr
