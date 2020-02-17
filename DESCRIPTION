@@ -17,3 +17,5 @@ Imports:
     recipes,
     tibble,
     magrittr
+URL: https://github.com/EmilHvitfeldt/extrasteps
+BugReports: https://github.com/EmilHvitfeldt/extrasteps/issues
