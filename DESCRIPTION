@@ -14,9 +14,11 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1.9001
 Imports: 
-    recipes,
+    recipes (>= 0.1.16.9000),
     tibble,
     magrittr,
     rlang
 URL: https://github.com/EmilHvitfeldt/extrasteps
 BugReports: https://github.com/EmilHvitfeldt/extrasteps/issues
+Remotes:  
+    tidymodels/recipes
