@@ -49,11 +49,11 @@ one of "auto", "secs", "mins", "hours","days",  and "weeks" Defaults to
 be populated (eventually) by the \code{terms} argument.}
 
 \item{skip}{A logical. Should the step be skipped when the
-recipe is baked by \code{\link[recipes:bake.recipe]{bake.recipe()}}? While all operations are baked
-when \code{\link[recipes:prep.recipe]{prep.recipe()}} is run, some operations may not be able to be
+recipe is baked by \code{\link[recipes:bake]{bake.recipe()}}? While all operations are baked
+when \code{\link[recipes:prep]{prep.recipe()}} is run, some operations may not be able to be
 conducted on new data (e.g. processing the outcome variable(s)).
 Care should be taken when using \code{skip = TRUE} as it may affect
-the computations for subsequent operations}
+the computations for subsequent operations.}
 
 \item{id}{A character string that is unique to this step to identify it.}
 
