@@ -1,7 +1,7 @@
-#' Time before Recurrent Date Time Event
+#' Time after Recurrent Date Time Event
 #'
-#' `step_date_before` creates a *specification* of a recipe
-#'  step that will create new columns indicating the time before an
+#' `step_date_after` creates a *specification* of a recipe
+#'  step that will create new columns indicating the time after an
 #'  recurrent event.
 #'
 #' @inheritParams recipes::step_center
@@ -39,7 +39,7 @@
 #' The effect of `transform` is illustrated below.
 #'
 #'
-#' ```{r date_before, echo=FALSE, message=FALSE}
+#' ```{r date_after, echo=FALSE, message=FALSE}
 #' library(almanac)
 #' library(ggplot2)
 #' library(dplyr)
@@ -52,61 +52,61 @@
 #' mondays <- weekly() %>% recur_on_wday("Monday")
 #'
 #' recipe(~., data = examples) %>%
-#'   step_date_before(date1,
+#'   step_date_after(date1,
 #'                    rules = list(monday = mondays),
 #'                    transform = "identity") %>%
 #'   prep() %>%
 #'   bake(new_data = NULL) %>%
 #'   bind_cols(examples) %>%
-#'   ggplot(aes(date1, date1_before_monday)) +
+#'   ggplot(aes(date1, date1_after_monday)) +
 #'   geom_col() +
 #'   theme_minimal() +
-#'   labs(title = "Days before Mondays in January 2021",
+#'   labs(title = "Days after Mondays in January 2021",
 #'        subtitle = "Without transformation",
 #'        y = NULL, x = NULL) +
 #'   scale_x_date(date_breaks = "1 day", date_labels = "%d")
 #'
 #' recipe(~., data = examples) %>%
-#'   step_date_before(date1,
+#'   step_date_after(date1,
 #'                    rules = list(monday = mondays),
 #'                    transform = "inverse") %>%
 #'   prep() %>%
 #'   bake(new_data = NULL) %>%
 #'   bind_cols(examples) %>%
-#'   ggplot(aes(date1, date1_before_monday)) +
+#'   ggplot(aes(date1, date1_after_monday)) +
 #'   geom_col() +
 #'   theme_minimal() +
-#'   labs(title = "Days before Mondays in January 2021",
+#'   labs(title = "Days after Mondays in January 2021",
 #'        subtitle = "With \"inverse\" transformation",
 #'        y = NULL, x = NULL) +
 #'   scale_x_date(date_breaks = "1 day", date_labels = "%d")
 #'
 #' recipe(~., data = examples) %>%
-#'   step_date_before(date1,
+#'   step_date_after(date1,
 #'                    rules = list(monday = mondays),
 #'                    transform = "exp") %>%
 #'   prep() %>%
 #'   bake(new_data = NULL) %>%
 #'   bind_cols(examples) %>%
-#'   ggplot(aes(date1, date1_before_monday)) +
+#'   ggplot(aes(date1, date1_after_monday)) +
 #'   geom_col() +
 #'   theme_minimal() +
-#'   labs(title = "Days before Mondays in January 2021",
+#'   labs(title = "Days after Mondays in January 2021",
 #'        subtitle = "With \"exp\" transformation",
 #'        y = NULL, x = NULL) +
 #'   scale_x_date(date_breaks = "1 day", date_labels = "%d")
 #'
 #' recipe(~., data = examples) %>%
-#'   step_date_before(date1,
+#'   step_date_after(date1,
 #'                    rules = list(monday = mondays),
 #'                    transform = "log") %>%
 #'   prep() %>%
 #'   bake(new_data = NULL) %>%
 #'   bind_cols(examples) %>%
-#'   ggplot(aes(date1, date1_before_monday)) +
+#'   ggplot(aes(date1, date1_after_monday)) +
 #'   geom_col() +
 #'   theme_minimal() +
-#'   labs(title = "Days before Mondays in January 2021",
+#'   labs(title = "Days after Mondays in January 2021",
 #'        subtitle = "With \"log\" transformation",
 #'        y = NULL, x = NULL) +
 #'   scale_x_date(date_breaks = "1 day", date_labels = "%d")
@@ -115,7 +115,7 @@
 #' The naming of the resulting variables will be on the form
 #'
 #' ```r
-#' {variable name}_before_{name of rule}
+#' {variable name}_after_{name of rule}
 #' ```
 #'
 #' @examples
@@ -132,12 +132,12 @@
 #' rules <- list(easter = on_easter, weekend = on_weekend)
 #'
 #' rec_spec <- recipe(ridership ~ date, data = Chicago) %>%
-#'   step_date_before(date, rules = rules)
+#'   step_date_after(date, rules = rules)
 #'
 #' rec_spec_preped <- prep(rec_spec)
 #'
 #' bake(rec_spec_preped, new_data = NULL)
-step_date_before <-
+step_date_after <-
   function(recipe,
            ...,
            role = "predictor",
@@ -146,11 +146,11 @@ step_date_before <-
            transform = "identity",
            columns = NULL,
            skip = FALSE,
-           id = rand_id("date_before")) {
+           id = rand_id("date_after")) {
 
     add_step(
       recipe,
-      step_date_before_new(
+      step_date_after_new(
         terms = ellipse_check(...),
         trained = trained,
         role = role,
@@ -163,10 +163,10 @@ step_date_before <-
     )
   }
 
-step_date_before_new <-
+step_date_after_new <-
   function(terms, role, trained, rules, transform, columns, skip, id) {
     step(
-      subclass = "date_before",
+      subclass = "date_after",
       terms = terms,
       role = role,
       trained = trained,
@@ -179,7 +179,7 @@ step_date_before_new <-
   }
 
 #' @export
-prep.step_date_before <- function(x, training, info = NULL, ...) {
+prep.step_date_after <- function(x, training, info = NULL, ...) {
   col_names <- recipes_eval_select(x$terms, training, info)
 
   date_data <- info[info$variable %in% col_names, ]
@@ -202,7 +202,7 @@ prep.step_date_before <- function(x, training, info = NULL, ...) {
     )
   }
 
-  step_date_before_new(
+  step_date_after_new(
     terms = x$terms,
     role = x$role,
     trained = TRUE,
@@ -215,11 +215,11 @@ prep.step_date_before <- function(x, training, info = NULL, ...) {
 }
 
 #' @export
-bake.step_date_before <- function(object, new_data, ...) {
+bake.step_date_after <- function(object, new_data, ...) {
 
   transform <- fetch_date_transforms(object$transform)
 
-  new_columns <- purrr::imap(object$columns, date_before_helper,
+  new_columns <- purrr::imap(object$columns, date_after_helper,
                              new_data, object$rules, transform)
 
   new_data <- dplyr::bind_cols(new_data, new_columns)
@@ -241,27 +241,27 @@ fetch_date_transforms <- function(x) {
   if (!x %in% names(date_transforms)) {
     rlang::abort(
       paste("`transform` must be a function or one of built-in names.",
-            "See `?step_date_before` for valid input.")
+            "See `?step_date_after` for valid input.")
     )
   }
   date_transforms[[x]]
 }
 
-date_before_helper <- function(columnn, name, new_data, rule, transform) {
+date_after_helper <- function(columnn, name, new_data, rule, transform) {
   res <- purrr::map_dfc(rule, ~ {
     values <- new_data[[columnn]]
-    res <- alma_next(values, .x, inclusive = TRUE) - values
+    res <- values - alma_previous(values, .x, inclusive = TRUE)
     res <- as.numeric(res)
     res <- transform(res)
     res
-    }
+  }
   )
 
-  names(res) <- paste(name, "before", names(res), sep = "_")
+  names(res) <- paste(name, "after", names(res), sep = "_")
   res
 }
 
-print.step_date_before <-
+print.step_date_after <-
   function(x, width = max(20, options()$width - 35), ...) {
     cat("Time events from ")
     printer(x$columns, x$terms, x$trained, width = width)
@@ -269,9 +269,9 @@ print.step_date_before <-
   }
 
 #' @rdname tidy.recipe
-#' @param x A `step_date_before` object.
+#' @param x A `step_date_after` object.
 #' @export
-tidy.step_date_before <- function(x, ...) {
+tidy.step_date_after <- function(x, ...) {
   if (is_trained(x)) {
     res <- tibble(terms = names(x$objects), rules = x$rules)
   } else {
