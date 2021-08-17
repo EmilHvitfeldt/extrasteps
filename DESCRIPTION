@@ -17,8 +17,15 @@ Imports:
     recipes (>= 0.1.16.9000),
     tibble,
     magrittr,
-    rlang
+    rlang,
+    almanac,
+    purrr,
+    dplyr
 URL: https://github.com/EmilHvitfeldt/extrasteps
 BugReports: https://github.com/EmilHvitfeldt/extrasteps/issues
-Remotes:  
+Remotes: 
     tidymodels/recipes
+Suggests: 
+    testthat (>= 3.0.0),
+    modeldata
+Config/testthat/edition: 3
