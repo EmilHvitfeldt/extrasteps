@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Time before Recurrent Date Time Event — step_date_before • extrasteps</title>
+<title>Time after Recurrent Date Time Event — step_date_after • extrasteps</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,9 @@
 
 
 
-<meta property="og:title" content="Time before Recurrent Date Time Event — step_date_before" />
-<meta property="og:description" content="step_date_before creates a specification of a recipe
-step that will create new columns indicating the time before an
+<meta property="og:title" content="Time after Recurrent Date Time Event — step_date_after" />
+<meta property="og:description" content="step_date_after creates a specification of a recipe
+step that will create new columns indicating the time after an
 recurrent event." />
 
 
@@ -110,18 +110,18 @@ recurrent event." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Time before Recurrent Date Time Event</h1>
-    <small class="dont-index">Source: <a href='https://github.com/EmilHvitfeldt/extrasteps/blob/master/R/date_before.R'><code>R/date_before.R</code></a></small>
-    <div class="hidden name"><code>step_date_before.Rd</code></div>
+    <h1>Time after Recurrent Date Time Event</h1>
+    <small class="dont-index">Source: <a href='https://github.com/EmilHvitfeldt/extrasteps/blob/master/R/date_after.R'><code>R/date_after.R</code></a></small>
+    <div class="hidden name"><code>step_date_after.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>step_date_before</code> creates a <em>specification</em> of a recipe
-step that will create new columns indicating the time before an
+    <p><code>step_date_after</code> creates a <em>specification</em> of a recipe
+step that will create new columns indicating the time after an
 recurrent event.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>step_date_before</span><span class='op'>(</span>
+    <pre class="usage"><span class='fu'>step_date_after</span><span class='op'>(</span>
   <span class='va'>recipe</span>,
   <span class='va'>...</span>,
   role <span class='op'>=</span> <span class='st'>"predictor"</span>,
@@ -130,7 +130,7 @@ recurrent event.</p>
   transform <span class='op'>=</span> <span class='st'>"identity"</span>,
   columns <span class='op'>=</span> <span class='cn'>NULL</span>,
   skip <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  id <span class='op'>=</span> <span class='fu'><a href='https://recipes.tidymodels.org/reference/rand_id.html'>rand_id</a></span><span class='op'>(</span><span class='st'>"date_before"</span><span class='op'>)</span>
+  id <span class='op'>=</span> <span class='fu'>rand_id</span><span class='op'>(</span><span class='st'>"date_after"</span><span class='op'>)</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -169,7 +169,7 @@ resulting variables. See details for allowed names and their functions.</p></td>
       <th>columns</th>
       <td><p>A character string of variables that will be
 used as inputs. This field is a placeholder and will be
-populated once <code><a href='https://recipes.tidymodels.org/reference/prep.html'>prep.recipe()</a></code> is used.</p></td>
+populated once <code>prep.recipe()</code> is used.</p></td>
     </tr>
     <tr>
       <th>skip</th>
@@ -208,13 +208,21 @@ to avoid <code>Inf</code>.<div class="sourceCode r"></p><pre><span class='st'>"i
 <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span><span class='op'>(</span><span class='va'>x</span> <span class='op'>+</span> <span class='fl'>0.5</span><span class='op'>)</span>
 </pre><p></div></p>
 <p>The effect of <code>transform</code> is illustrated below.</p>
-<p><img src='figures/date_before-1.png' alt='' /><img src='figures/date_before-2.png' alt='' /><img src='figures/date_before-3.png' alt='' /><img src='figures/date_before-4.png' alt='' /></p>
-<p>The naming of the resulting variables will be on the form<div class="sourceCode r"></p><pre>{variable name}_before_{name of rule}
+<p><img src='figures/date_after-1.png' alt='' /><img src='figures/date_after-2.png' alt='' /><img src='figures/date_after-3.png' alt='' /><img src='figures/date_after-4.png' alt='' /></p>
+<p>The naming of the resulting variables will be on the form<div class="sourceCode r"></p><pre>{variable name}_after_{name of rule}
 </pre><p></div></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/tidymodels/recipes'>recipes</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/EmilHvitfeldt/extrasteps'>extrasteps</a></span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Loading required package: dplyr</span></div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: ‘dplyr’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:stats’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: ‘recipes’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:stats’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    step</span></div><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/EmilHvitfeldt/extrasteps'>extrasteps</a></span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/DavisVaughan/almanac'>almanac</a></span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://modeldata.tidymodels.org'>modeldata</a></span><span class='op'>)</span>
 
@@ -226,24 +234,24 @@ to avoid <code>Inf</code>.<div class="sourceCode r"></p><pre><span class='st'>"i
 <span class='va'>rules</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>easter <span class='op'>=</span> <span class='va'>on_easter</span>, weekend <span class='op'>=</span> <span class='va'>on_weekend</span><span class='op'>)</span>
 
 <span class='va'>rec_spec</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://recipes.tidymodels.org/reference/recipe.html'>recipe</a></span><span class='op'>(</span><span class='va'>ridership</span> <span class='op'>~</span> <span class='va'>date</span>, data <span class='op'>=</span> <span class='va'>Chicago</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>step_date_before</span><span class='op'>(</span><span class='va'>date</span>, rules <span class='op'>=</span> <span class='va'>rules</span><span class='op'>)</span>
+  <span class='fu'>step_date_after</span><span class='op'>(</span><span class='va'>date</span>, rules <span class='op'>=</span> <span class='va'>rules</span><span class='op'>)</span>
 
 <span class='va'>rec_spec_preped</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://recipes.tidymodels.org/reference/prep.html'>prep</a></span><span class='op'>(</span><span class='va'>rec_spec</span><span class='op'>)</span>
 
 <span class='fu'><a href='https://recipes.tidymodels.org/reference/bake.html'>bake</a></span><span class='op'>(</span><span class='va'>rec_spec_preped</span>, new_data <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 5,698 × 3</span>
-#&gt;    ridership date_before_easter date_before_weekend
-#&gt;        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>               <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span>     15.7                  83                   5
-#&gt; <span style='color: #BCBCBC;'> 2</span>     15.8                  82                   4
-#&gt; <span style='color: #BCBCBC;'> 3</span>     15.9                  81                   3
-#&gt; <span style='color: #BCBCBC;'> 4</span>     15.9                  80                   2
-#&gt; <span style='color: #BCBCBC;'> 5</span>     15.4                  79                   1
-#&gt; <span style='color: #BCBCBC;'> 6</span>      2.42                 78                   0
-#&gt; <span style='color: #BCBCBC;'> 7</span>      1.47                 77                   0
-#&gt; <span style='color: #BCBCBC;'> 8</span>     15.5                  76                   5
-#&gt; <span style='color: #BCBCBC;'> 9</span>     15.9                  75                   4
-#&gt; <span style='color: #BCBCBC;'>10</span>     15.9                  74                   3
+#&gt;    ridership date_after_easter date_after_weekend
+#&gt;        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span>     15.7                274                  1
+#&gt; <span style='color: #BCBCBC;'> 2</span>     15.8                275                  2
+#&gt; <span style='color: #BCBCBC;'> 3</span>     15.9                276                  3
+#&gt; <span style='color: #BCBCBC;'> 4</span>     15.9                277                  4
+#&gt; <span style='color: #BCBCBC;'> 5</span>     15.4                278                  5
+#&gt; <span style='color: #BCBCBC;'> 6</span>      2.42               279                  0
+#&gt; <span style='color: #BCBCBC;'> 7</span>      1.47               280                  0
+#&gt; <span style='color: #BCBCBC;'> 8</span>     15.5                281                  1
+#&gt; <span style='color: #BCBCBC;'> 9</span>     15.9                282                  2
+#&gt; <span style='color: #BCBCBC;'>10</span>     15.9                283                  3
 #&gt; <span style='color: #949494;'># … with 5,688 more rows</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
