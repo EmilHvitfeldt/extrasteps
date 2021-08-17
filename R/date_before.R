@@ -19,20 +19,21 @@
 #'
 #' The `transform` argument can be function that takes a numeric vector and
 #' returns a numeric vector of the same length. It can also be a character
-#' vector, below is the supported vector names.
+#' vector, below is the supported vector names. Some functions come with offset
+#' to avoid `Inf`.
 #'
 #' ```r
 #' "identity"
 #' function(x) x
 #'
 #' "inverse"
-#' function(x) 1 / x
+#' function(x) 1 / (x + 0.5)
 #'
 #' "exp"
 #' function(x) exp(x)
 #'
 #' "log"
-#' function(x) log(x)
+#' function(x) log(x + 0.5)
 #' ```
 #'
 #' The naming of the resulting variables will be on the form
@@ -152,9 +153,9 @@ bake.step_date_before <- function(object, new_data, ...) {
 
 date_transforms <- list(
   identity = identity,
-  inverse = function(x) 1 / x,
+  inverse = function(x) 1 / (x + 0.5),
   exp = exp,
-  log = log
+  log = function(x) log(x + 0.5)
 )
 
 fetch_date_transforms <- function(x) {

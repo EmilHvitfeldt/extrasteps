@@ -64,17 +64,18 @@ recurrent event.
 \details{
 The \code{transform} argument can be function that takes a numeric vector and
 returns a numeric vector of the same length. It can also be a character
-vector, below is the supported vector names.\if{html}{\out{<div class="sourceCode r">}}\preformatted{"identity"
+vector, below is the supported vector names. Some functions come with offset
+to avoid \code{Inf}.\if{html}{\out{<div class="sourceCode r">}}\preformatted{"identity"
 function(x) x
 
 "inverse"
-function(x) 1 / x
+function(x) 1 / (x + 0.5)
 
 "exp"
 function(x) exp(x)
 
 "log"
-function(x) log(x)
+function(x) log(x + 0.5)
 }\if{html}{\out{</div>}}
 
 The naming of the resulting variables will be on the form\if{html}{\out{<div class="sourceCode r">}}\preformatted{\{variable name\}_before_\{name of rule\}
