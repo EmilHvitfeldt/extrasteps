@@ -2,7 +2,6 @@
 % Please edit documentation in R/yeet.R
 \name{step_yeet}
 \alias{step_yeet}
-\alias{tidy.step_yeet}
 \title{Removes date and datetimes variables}
 \usage{
 step_yeet(
@@ -14,8 +13,6 @@ step_yeet(
   skip = FALSE,
   id = rand_id("yeet")
 )
-
-tidy.step_yeet(x, ...)
 }
 \arguments{
 \item{recipe}{A recipe object. The step will be added to the
@@ -42,8 +39,6 @@ Care should be taken when using \code{skip = TRUE} as it may affect
 the computations for subsequent operations.}
 
 \item{id}{A character string that is unique to this step to identify it.}
-
-\item{x}{A \code{step_yeet} object.}
 }
 \value{
 An updated version of \code{recipe} with the new step added to the

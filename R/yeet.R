@@ -100,7 +100,7 @@ print.step_yeet <-
   }
 
 
-#' @rdname step_yeet
+#' @rdname tidy.recipe
 #' @param x A `step_yeet` object.
 #' @export
 tidy.step_yeet <- function (x, ...) {

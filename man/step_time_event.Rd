@@ -2,7 +2,6 @@
 % Please edit documentation in R/time_event.R
 \name{step_time_event}
 \alias{step_time_event}
-\alias{tidy.step_time_event}
 \title{Indicate Recurrent Date Time Event}
 \usage{
 step_time_event(
@@ -15,8 +14,6 @@ step_time_event(
   skip = FALSE,
   id = rand_id("time_event")
 )
-
-tidy.step_time_event(x, ...)
 }
 \arguments{
 \item{recipe}{A recipe object. The step will be added to the
@@ -45,8 +42,6 @@ Care should be taken when using \code{skip = TRUE} as it may affect
 the computations for subsequent operations.}
 
 \item{id}{A character string that is unique to this step to identify it.}
-
-\item{x}{A \code{step_time_event} object.}
 }
 \value{
 An updated version of \code{recipe} with the new check added to the

@@ -130,7 +130,7 @@ print.step_time_event <-
     invisible(x)
   }
 
-#' @rdname step_time_event
+#' @rdname tidy.recipe
 #' @param x A `step_time_event` object.
 #' @export
 tidy.step_time_event <- function(x, ...) {

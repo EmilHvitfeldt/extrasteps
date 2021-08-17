@@ -4,6 +4,7 @@
 #' @importFrom recipes recipes_eval_select sel2char step terms_select
 #' @importFrom rlang na_chr
 #' @importFrom tibble as_tibble tibble
+#' @importFrom generics tidy
 NULL
 
 globalVariables(".")

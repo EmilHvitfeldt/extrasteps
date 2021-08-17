@@ -2,7 +2,6 @@
 % Please edit documentation in R/difftime.R
 \name{step_difftime}
 \alias{step_difftime}
-\alias{tidy.step_difftime}
 \title{difftimearithmic Transformation}
 \usage{
 step_difftime(
@@ -17,8 +16,6 @@ step_difftime(
   skip = FALSE,
   id = rand_id("difftime")
 )
-
-tidy.step_difftime(x, ...)
 }
 \arguments{
 \item{recipe}{A recipe object. The step will be added to the
@@ -56,8 +53,6 @@ Care should be taken when using \code{skip = TRUE} as it may affect
 the computations for subsequent operations.}
 
 \item{id}{A character string that is unique to this step to identify it.}
-
-\item{x}{A \code{step_difftime} object.}
 }
 \value{
 An updated version of \code{recipe} with the new step

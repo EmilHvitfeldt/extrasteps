@@ -20,12 +20,14 @@ Imports:
     rlang,
     almanac,
     purrr,
-    dplyr
+    dplyr,
+    generics
 URL: https://github.com/EmilHvitfeldt/extrasteps
 BugReports: https://github.com/EmilHvitfeldt/extrasteps/issues
 Remotes: 
     tidymodels/recipes
 Suggests: 
     testthat (>= 3.0.0),
-    modeldata
+    modeldata,
+    ggplot2
 Config/testthat/edition: 3

@@ -192,7 +192,7 @@ print.step_date_before <-
     invisible(x)
   }
 
-#' @rdname step_date_before
+#' @rdname tidy.recipe
 #' @param x A `step_date_before` object.
 #' @export
 tidy.step_date_before <- function(x, ...) {

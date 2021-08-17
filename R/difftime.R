@@ -149,7 +149,7 @@ print.step_difftime <-
     invisible(x)
   }
 
-#' @rdname step_difftime
+#' @rdname tidy.recipe
 #' @param x A `step_difftime` object.
 #' @export
 tidy.step_difftime <- function(x, ...) {

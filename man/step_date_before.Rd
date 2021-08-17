@@ -2,7 +2,6 @@
 % Please edit documentation in R/date_before.R
 \name{step_date_before}
 \alias{step_date_before}
-\alias{tidy.step_date_before}
 \title{Time before Recurrent Date Time Event}
 \usage{
 step_date_before(
@@ -16,8 +15,6 @@ step_date_before(
   skip = FALSE,
   id = rand_id("date_before")
 )
-
-tidy.step_date_before(x, ...)
 }
 \arguments{
 \item{recipe}{A recipe object. The step will be added to the
@@ -49,8 +46,6 @@ Care should be taken when using \code{skip = TRUE} as it may affect
 the computations for subsequent operations.}
 
 \item{id}{A character string that is unique to this step to identify it.}
-
-\item{x}{A \code{step_date_before} object.}
 }
 \value{
 An updated version of \code{recipe} with the new check added to the
@@ -77,6 +72,9 @@ function(x) exp(x)
 "log"
 function(x) log(x + 0.5)
 }\if{html}{\out{</div>}}
+
+example below
+\figure{unnamed-chunk-1-1.png}
 
 The naming of the resulting variables will be on the form\if{html}{\out{<div class="sourceCode r">}}\preformatted{\{variable name\}_before_\{name of rule\}
 }\if{html}{\out{</div>}}
