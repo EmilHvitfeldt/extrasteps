@@ -36,7 +36,8 @@
 #' function(x) log(x + 0.5)
 #' ```
 #'
-#' The effect of `transform` is illutrated below.
+#' The effect of `transform` is illustrated below.
+#'
 #'
 #' ```{r, echo=FALSE, message=FALSE}
 #' library(almanac)
