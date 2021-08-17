@@ -11,6 +11,7 @@ step_date_before(
   role = "predictor",
   trained = FALSE,
   rules = list(),
+  transform = "identity",
   columns = NULL,
   skip = FALSE,
   id = rand_id("date_before")
@@ -32,6 +33,9 @@ created.}
 preprocessing have been estimated.}
 
 \item{rules}{Named list of \code{almanac} rules.}
+
+\item{transform}{A function or character indication a function used oon the
+resulting variables. See details for allowed names and their functions.}
 
 \item{columns}{A character string of variables that will be
 used as inputs. This field is a placeholder and will be
@@ -56,6 +60,25 @@ sequence of any existing operations.
 \code{step_date_before} creates a \emph{specification} of a recipe
 step that will create new columns indicating the time before an
 recurrent event.
+}
+\details{
+The \code{transform} argument can be function that takes a numeric vector and
+returns a numeric vector of the same length. It can also be a character
+vector, below is the supported vector names.\if{html}{\out{<div class="sourceCode r">}}\preformatted{"identity"
+function(x) x
+
+"inverse"
+function(x) 1 / x
+
+"exp"
+function(x) exp(x)
+
+"log"
+function(x) log(x)
+}\if{html}{\out{</div>}}
+
+The naming of the resulting variables will be on the form\if{html}{\out{<div class="sourceCode r">}}\preformatted{\{variable name\}_before_\{name of rule\}
+}\if{html}{\out{</div>}}
 }
 \examples{
 library(recipes)

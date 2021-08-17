@@ -19,15 +19,15 @@ test_that("time_event works", {
 
   res <- bake(rec_spec, new_data = NULL)
 
-  expect_equal(names(res), c("date1_weekend", "date1_weekday"))
+  expect_equal(names(res), c("date1_before_weekend", "date1_before_weekday"))
 
   expect_equal(
     as.numeric(alma_next(examples$date1, on_weekdays, inclusive = TRUE) - examples$date1),
-    res$date1_weekday
+    res$date1_before_weekday
   )
   expect_equal(
     as.numeric(alma_next(examples$date1, on_weekends, inclusive = TRUE) - examples$date1),
-    res$date1_weekend
+    res$date1_before_weekend
   )
 })
 
@@ -42,24 +42,24 @@ test_that("time_event works with multiple columns", {
 
   res <- bake(rec_spec, new_data = NULL)
 
-  expect_equal(names(res), c("date1_weekend", "date1_weekday",
-                             "date2_weekend", "date2_weekday"))
+  expect_equal(names(res), c("date1_before_weekend", "date1_before_weekday",
+                             "date2_before_weekend", "date2_before_weekday"))
 
   expect_equal(
     as.numeric(alma_next(examples$date1, on_weekdays, inclusive = TRUE) - examples$date1),
-    res$date1_weekday
+    res$date1_before_weekday
   )
   expect_equal(
     as.numeric(alma_next(examples$date1, on_weekends, inclusive = TRUE) - examples$date1),
-    res$date1_weekend
+    res$date1_before_weekend
   )
   expect_equal(
     as.numeric(alma_next(examples$date2, on_weekdays, inclusive = TRUE) - examples$date2),
-    res$date2_weekday
+    res$date2_before_weekday
   )
   expect_equal(
     as.numeric(alma_next(examples$date2, on_weekends, inclusive = TRUE) - examples$date2),
-    res$date2_weekend
+    res$date2_before_weekend
   )
 })
 

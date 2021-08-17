@@ -6,12 +6,40 @@
 #'
 #' @inheritParams recipes::step_center
 #' @param rules Named list of `almanac` rules.
+#' @param transform A function or character indication a function used oon the
+#'  resulting variables. See details for allowed names and their functions.
 #' @param columns A character string of variables that will be
 #'  used as inputs. This field is a placeholder and will be
 #'  populated once [prep.recipe()] is used.
 #' @return An updated version of `recipe` with the new check added to the
 #'  sequence of any existing operations.
 #' @export
+#'
+#' @details
+#'
+#' The `transform` argument can be function that takes a numeric vector and
+#' returns a numeric vector of the same length. It can also be a character
+#' vector, below is the supported vector names.
+#'
+#' ```r
+#' "identity"
+#' function(x) x
+#'
+#' "inverse"
+#' function(x) 1 / x
+#'
+#' "exp"
+#' function(x) exp(x)
+#'
+#' "log"
+#' function(x) log(x)
+#' ```
+#'
+#' The naming of the resulting variables will be on the form
+#'
+#' ```r
+#' {variable name}_before_{name of rule}
+#' ```
 #'
 #' @examples
 #' library(recipes)
@@ -38,6 +66,7 @@ step_date_before <-
            role = "predictor",
            trained = FALSE,
            rules = list(),
+           transform = "identity",
            columns = NULL,
            skip = FALSE,
            id = rand_id("date_before")) {
@@ -49,6 +78,7 @@ step_date_before <-
         trained = trained,
         role = role,
         rules = rules,
+        transform = transform,
         columns = columns,
         skip = skip,
         id = id
@@ -57,13 +87,14 @@ step_date_before <-
   }
 
 step_date_before_new <-
-  function(terms, role, trained, rules, columns, skip, id) {
+  function(terms, role, trained, rules, transform, columns, skip, id) {
     step(
       subclass = "date_before",
       terms = terms,
       role = role,
       trained = trained,
       rules = rules,
+      transform = transform,
       columns = columns,
       skip = skip,
       id = id
@@ -99,6 +130,7 @@ prep.step_date_before <- function(x, training, info = NULL, ...) {
     role = x$role,
     trained = TRUE,
     rules = x$rules,
+    transform = x$transform,
     columns = col_names,
     skip = x$skip,
     id = x$id
@@ -108,21 +140,47 @@ prep.step_date_before <- function(x, training, info = NULL, ...) {
 #' @export
 bake.step_date_before <- function(object, new_data, ...) {
 
+  transform <- fetch_date_transforms(object$transform)
+
   new_columns <- purrr::imap(object$columns, date_before_helper,
-                             new_data, object$rules)
+                             new_data, object$rules, transform)
 
   new_data <- dplyr::bind_cols(new_data, new_columns)
   new_data <- dplyr::select(new_data, -names(object$columns))
   new_data
 }
 
-date_before_helper <- function(columnn, name, new_data, rule) {
+date_transforms <- list(
+  identity = identity,
+  inverse = function(x) 1 / x,
+  exp = exp,
+  log = log
+)
+
+fetch_date_transforms <- function(x) {
+  if (is.function(x)) {
+    return(x)
+  }
+  if (!x %in% names(date_transforms)) {
+    rlang::abort(
+      paste("`transform` must be a function or one of built-in names.",
+            "See `?step_date_before` for valid input.")
+    )
+  }
+  date_transforms[[x]]
+}
+
+date_before_helper <- function(columnn, name, new_data, rule, transform) {
   res <- purrr::map_dfc(rule, ~ {
-    as.numeric(alma_next(new_data[[columnn]], .x, inclusive = TRUE) - new_data[[columnn]])
+    values <- new_data[[columnn]]
+    res <- alma_next(values, .x, inclusive = TRUE) - values
+    res <- as.numeric(res)
+    res <- transform(res)
+    res
     }
   )
 
-  names(res) <- paste(name, names(res), sep = "_")
+  names(res) <- paste(name, "before", names(res), sep = "_")
   res
 }
 
