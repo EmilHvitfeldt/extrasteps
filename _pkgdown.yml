@@ -3,6 +3,10 @@ reference:
     contents:
     - step_time_event
     - step_difftime
+    - step_date_before
   - title: Meme Steps
     contents:
     - step_yeet
+  - title: Tidy Methods
+    contents:
+    - tidy.recipe
