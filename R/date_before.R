@@ -36,6 +36,81 @@
 #' function(x) log(x + 0.5)
 #' ```
 #'
+#' The effect of `transform` is illutrated below.
+#'
+#' ```{r, echo=FALSE, message=FALSE}
+#' library(almanac)
+#' library(ggplot2)
+#' library(dplyr)
+#' library(recipes)
+#'
+#' examples <- tibble(
+#' date1 = as.Date("2021-01-01") + 0:13
+#' )
+#'
+#' mondays <- weekly() %>% recur_on_wday("Monday")
+#'
+#' recipe(~., data = examples) %>%
+#'   step_date_before(date1,
+#'                    rules = list(monday = mondays),
+#'                    transform = "identity") %>%
+#'   prep() %>%
+#'   bake(new_data = NULL) %>%
+#'   bind_cols(examples) %>%
+#'   ggplot(aes(date1, date1_before_monday)) +
+#'   geom_col() +
+#'   theme_minimal() +
+#'   labs(title = "Days before Mondays in January 2021",
+#'        subtitle = "Without transformation",
+#'        y = NULL, x = NULL) +
+#'   scale_x_date(date_breaks = "1 day", date_labels = "%d")
+#'
+#' recipe(~., data = examples) %>%
+#'   step_date_before(date1,
+#'                    rules = list(monday = mondays),
+#'                    transform = "inverse") %>%
+#'   prep() %>%
+#'   bake(new_data = NULL) %>%
+#'   bind_cols(examples) %>%
+#'   ggplot(aes(date1, date1_before_monday)) +
+#'   geom_col() +
+#'   theme_minimal() +
+#'   labs(title = "Days before Mondays in January 2021",
+#'        subtitle = "With \"inverse\" transformation",
+#'        y = NULL, x = NULL) +
+#'   scale_x_date(date_breaks = "1 day", date_labels = "%d")
+#'
+#' recipe(~., data = examples) %>%
+#'   step_date_before(date1,
+#'                    rules = list(monday = mondays),
+#'                    transform = "exp") %>%
+#'   prep() %>%
+#'   bake(new_data = NULL) %>%
+#'   bind_cols(examples) %>%
+#'   ggplot(aes(date1, date1_before_monday)) +
+#'   geom_col() +
+#'   theme_minimal() +
+#'   labs(title = "Days before Mondays in January 2021",
+#'        subtitle = "With \"exp\" transformation",
+#'        y = NULL, x = NULL) +
+#'   scale_x_date(date_breaks = "1 day", date_labels = "%d")
+#'
+#' recipe(~., data = examples) %>%
+#'   step_date_before(date1,
+#'                    rules = list(monday = mondays),
+#'                    transform = "log") %>%
+#'   prep() %>%
+#'   bake(new_data = NULL) %>%
+#'   bind_cols(examples) %>%
+#'   ggplot(aes(date1, date1_before_monday)) +
+#'   geom_col() +
+#'   theme_minimal() +
+#'   labs(title = "Days before Mondays in January 2021",
+#'        subtitle = "With \"log\" transformation",
+#'        y = NULL, x = NULL) +
+#'   scale_x_date(date_breaks = "1 day", date_labels = "%d")
+#' ```
+#'
 #' The naming of the resulting variables will be on the form
 #'
 #' ```r

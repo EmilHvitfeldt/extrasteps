@@ -73,8 +73,8 @@ function(x) exp(x)
 function(x) log(x + 0.5)
 }\if{html}{\out{</div>}}
 
-example below
-\figure{unnamed-chunk-1-1.png}
+The effect of \code{transform} is illutrated below.
+\figure{unnamed-chunk-1-1.png}\figure{unnamed-chunk-1-2.png}\figure{unnamed-chunk-1-3.png}\figure{unnamed-chunk-1-4.png}
 
 The naming of the resulting variables will be on the form\if{html}{\out{<div class="sourceCode r">}}\preformatted{\{variable name\}_before_\{name of rule\}
 }\if{html}{\out{</div>}}
