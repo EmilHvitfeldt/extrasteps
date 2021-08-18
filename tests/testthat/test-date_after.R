@@ -8,6 +8,10 @@ examples <- tibble(
   numeric = 1:20
 )
 
+after_fun <- function(date, rule) {
+  as.numeric(date - alma_previous(date, rule, inclusive = TRUE))
+}
+
 test_that("time_event works", {
   on_weekends <- weekly() %>% recur_on_weekends()
   on_weekdays <- weekly() %>% recur_on_weekdays()
@@ -22,11 +26,11 @@ test_that("time_event works", {
   expect_equal(names(res), c("date1_after_weekend", "date1_after_weekday"))
 
   expect_equal(
-    as.numeric(examples$date1 - alma_previous(examples$date1, on_weekdays, inclusive = TRUE)),
+    after_fun(examples$date1, on_weekdays),
     res$date1_after_weekday
   )
   expect_equal(
-    as.numeric(examples$date1 - alma_previous(examples$date1, on_weekends, inclusive = TRUE)),
+    after_fun(examples$date1, on_weekends),
     res$date1_after_weekend
   )
 })
@@ -46,19 +50,19 @@ test_that("time_event works with multiple columns", {
                              "date2_after_weekend", "date2_after_weekday"))
 
   expect_equal(
-    as.numeric(examples$date1 - alma_previous(examples$date1, on_weekdays, inclusive = TRUE)),
+    after_fun(examples$date1, on_weekdays),
     res$date1_after_weekday
   )
   expect_equal(
-    as.numeric(examples$date1 - alma_previous(examples$date1, on_weekends, inclusive = TRUE)),
+    after_fun(examples$date1, on_weekends),
     res$date1_after_weekend
   )
   expect_equal(
-    as.numeric(examples$date2 - alma_previous(examples$date2, on_weekdays, inclusive = TRUE)),
+    after_fun(examples$date2, on_weekdays),
     res$date2_after_weekday
   )
   expect_equal(
-    as.numeric(examples$date2 - alma_previous(examples$date2, on_weekends, inclusive = TRUE)),
+    after_fun(examples$date2, on_weekends),
     res$date2_after_weekend
   )
 })
@@ -77,7 +81,7 @@ test_that("time_event works with transform", {
   res <- bake(rec_spec, new_data = NULL)
 
   expect_equal(
-    1 / (as.numeric(examples$date1 - alma_previous(examples$date1, on_weekends, inclusive = TRUE)) + 0.5),
+    1 / (after_fun(examples$date1, on_weekends) + 0.5),
     res$date1_after_weekend
   )
 
@@ -89,7 +93,7 @@ test_that("time_event works with transform", {
   res <- bake(rec_spec, new_data = NULL)
 
   expect_equal(
-    exp(as.numeric(examples$date1 - alma_previous(examples$date1, on_weekends, inclusive = TRUE))),
+    exp(after_fun(examples$date1, on_weekends)),
     res$date1_after_weekend
   )
 
@@ -101,7 +105,7 @@ test_that("time_event works with transform", {
   res <- bake(rec_spec, new_data = NULL)
 
   expect_equal(
-    log(as.numeric(examples$date1 - alma_previous(examples$date1, on_weekends, inclusive = TRUE)) + 0.5),
+    log(after_fun(examples$date1, on_weekends) + 0.5),
     res$date1_after_weekend
   )
 
@@ -115,9 +119,7 @@ test_that("time_event works with transform", {
   res <- bake(rec_spec, new_data = NULL)
 
   expect_equal(
-    custom_fun(
-      as.numeric(examples$date1 - alma_previous(examples$date1, on_weekends, inclusive = TRUE))
-    ),
+    custom_fun(after_fun(examples$date1, on_weekends)),
     res$date1_after_weekend
   )
 })
@@ -149,7 +151,7 @@ test_that("time_event errors", {
   expect_error(
     recipe(~ ., data = examples) %>%
       step_date_after(date1, rules = list(weekend = on_weekends,
-                                           christmas = "2020-12-25")) %>%
+                                            christmas = "2020-12-25")) %>%
       prep()
   )
 
