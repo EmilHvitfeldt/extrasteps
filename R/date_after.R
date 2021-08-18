@@ -227,26 +227,6 @@ bake.step_date_after <- function(object, new_data, ...) {
   new_data
 }
 
-date_transforms <- list(
-  identity = identity,
-  inverse = function(x) 1 / (x + 0.5),
-  exp = exp,
-  log = function(x) log(x + 0.5)
-)
-
-fetch_date_transforms <- function(x) {
-  if (is.function(x)) {
-    return(x)
-  }
-  if (!x %in% names(date_transforms)) {
-    rlang::abort(
-      paste("`transform` must be a function or one of built-in names.",
-            "See `?step_date_after` for valid input.")
-    )
-  }
-  date_transforms[[x]]
-}
-
 date_after_helper <- function(columnn, name, new_data, rule, transform) {
   res <- purrr::map_dfc(rule, ~ {
     values <- new_data[[columnn]]
