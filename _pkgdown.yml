@@ -5,6 +5,7 @@ reference:
     - step_difftime
     - step_date_after
     - step_date_before
+    - step_date_nearest
   - title: Meme Steps
     contents:
     - step_yeet
