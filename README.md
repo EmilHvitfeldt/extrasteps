@@ -5,8 +5,7 @@
 
 <!-- badges: start -->
 
-[![R build
-status](https://github.com/EmilHvitfeldt/extrasteps/workflows/R-CMD-check/badge.svg)](https://github.com/EmilHvitfeldt/extrasteps/actions)
+[![R-CMD-check](https://github.com/EmilHvitfeldt/extrasteps/workflows/R-CMD-check/badge.svg)](https://github.com/EmilHvitfeldt/extrasteps/actions)
 <!-- badges: end -->
 
 The goal of extrasteps is to provide additional steps for
