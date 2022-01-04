@@ -67,7 +67,7 @@ step_difftime <-
     add_step(
       recipe,
       step_difftime_new(
-        terms = ellipse_check(...),
+        terms = enquos(...),
         role = role,
         trained = trained,
         time = time,
@@ -98,7 +98,7 @@ step_difftime_new <-
 
 #' @export
 prep.step_difftime <- function(x, training, info = NULL, ...) {
-  col_names <- terms_select(x$terms, info = info)
+  col_names <- recipes_eval_select(x$terms, training, info)
 
   if (is.null(x$time)) {
     rlang::abort("`time` argument must be set.")
@@ -141,6 +141,7 @@ bake.step_difftime <- function(object, new_data, ...) {
   as_tibble(new_data)
 }
 
+#' @export
 print.step_difftime <-
   function(x, width = max(20, options()$width - 31), ...) {
     msg <- ifelse(x$signed, "Signed difftime ", "difftime ")
@@ -153,8 +154,12 @@ print.step_difftime <-
 #' @param x A `step_difftime` object.
 #' @export
 tidy.step_difftime <- function(x, ...) {
-  out <- data.frame(time = x$time,
-                    unit = x$unit,
-                    id = x$id)
-  out
+  if (is_trained(x)) {
+    res <- tibble(terms = unname(x$columns))
+  } else {
+    term_names <- sel2char(x$terms)
+    res <- tibble(terms = term_names)
+  }
+  res$id <- x$id
+  res
 }

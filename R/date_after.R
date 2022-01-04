@@ -151,7 +151,7 @@ step_date_after <-
     add_step(
       recipe,
       step_date_after_new(
-        terms = ellipse_check(...),
+        terms = enquos(...),
         trained = trained,
         role = role,
         rules = rules,
@@ -216,6 +216,10 @@ prep.step_date_after <- function(x, training, info = NULL, ...) {
 
 #' @export
 bake.step_date_after <- function(object, new_data, ...) {
+  if (length(object$column) == 0L) {
+    # Empty selection
+    return(new_data)
+  }
 
   transform <- fetch_date_transforms(object$transform)
 
@@ -241,6 +245,7 @@ date_after_helper <- function(columnn, name, new_data, rule, transform) {
   res
 }
 
+#' @export
 print.step_date_after <-
   function(x, width = max(20, options()$width - 35), ...) {
     cat("Time events from ")
@@ -253,10 +258,18 @@ print.step_date_after <-
 #' @export
 tidy.step_date_after <- function(x, ...) {
   if (is_trained(x)) {
-    res <- tibble(terms = names(x$objects), rules = x$rules)
+    if (length(x$columns) == 0) {
+      res <- tibble(terms = character(), rules = list())
+    } else {
+      res <- tibble(terms = unname(x$columns), rules = unname(x$rules))
+    }
   } else {
     term_names <- sel2char(x$terms)
-    res <- tibble(terms = term_names, rules = x$rules)
+    if (length(x$columns) == 0) {
+      res <- tibble(terms = character(), rules = list())
+    } else {
+      res <- tibble(terms = term_names, rules = unname(x$rules))
+    }
   }
   res$id <- x$id
   res
