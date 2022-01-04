@@ -156,3 +156,59 @@ test_that("time_event errors", {
   )
 
 })
+
+test_that("empty selection prep/bake is a no-op", {
+  on_weekends <- weekly() %>% recur_on_weekends()
+  on_weekdays <- weekly() %>% recur_on_weekdays()
+
+  rules <- list(weekend = on_weekends, weekday = on_weekdays)
+
+  rec1 <- recipe(mpg ~ ., mtcars)
+  rec2 <- step_date_before(rec1, rules = rules)
+
+  rec1 <- prep(rec1, mtcars)
+  rec2 <- prep(rec2, mtcars)
+
+  baked1 <- bake(rec1, mtcars)
+  baked2 <- bake(rec2, mtcars)
+
+  expect_identical(baked1, baked1)
+})
+
+test_that("empty selection tidy method works", {
+  on_weekends <- weekly() %>% recur_on_weekends()
+  on_weekdays <- weekly() %>% recur_on_weekdays()
+
+  rules <- list(weekend = on_weekends, weekday = on_weekdays)
+
+  rec <- recipe(mpg ~ ., mtcars)
+  rec <- step_date_before(rec, rules = rules)
+
+  expect_identical(
+    tidy(rec, number = 1),
+    tibble(terms = character(), rules = list(), id = character())
+  )
+
+  rec <- prep(rec, mtcars)
+
+  expect_identical(
+    tidy(rec, number = 1),
+    tibble(terms = character(), rules = list(), id = character())
+  )
+})
+
+test_that("empty printing", {
+  on_weekends <- weekly() %>% recur_on_weekends()
+  on_weekdays <- weekly() %>% recur_on_weekdays()
+
+  rules <- list(weekend = on_weekends, weekday = on_weekdays)
+
+  rec <- recipe(mpg ~ ., mtcars)
+  rec <- step_date_before(rec, rules = rules)
+
+  expect_snapshot(rec)
+
+  rec <- prep(rec, mtcars)
+
+  expect_snapshot(rec)
+})
