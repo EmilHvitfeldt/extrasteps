@@ -241,6 +241,7 @@ date_before_helper <- function(columnn, name, new_data, rule, transform) {
   res
 }
 
+#' @export
 print.step_date_before <-
   function(x, width = max(20, options()$width - 35), ...) {
     cat("Time events from ")

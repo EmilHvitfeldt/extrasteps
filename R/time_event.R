@@ -123,6 +123,7 @@ time_event_helper <- function(columnn, name, new_data, rule) {
   res
 }
 
+#' @export
 print.step_time_event <-
   function(x, width = max(20, options()$width - 35), ...) {
     cat("Time events from ")

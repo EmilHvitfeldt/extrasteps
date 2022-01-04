@@ -78,6 +78,7 @@ bake.step_yeet <- function(object, new_data, ...) {
   as_tibble(new_data)
 }
 
+#' @export
 print.step_yeet <-
   function(x, width = max(20, options()$width - 22), ...) {
     if (x$trained) {
