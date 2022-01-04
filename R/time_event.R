@@ -45,7 +45,7 @@ step_time_event <-
     add_step(
       recipe,
       step_time_event_new(
-        terms = ellipse_check(...),
+        terms = enquos(...),
         trained = trained,
         role = role,
         rules = rules,
@@ -107,6 +107,10 @@ prep.step_time_event <- function(x, training, info = NULL, ...) {
 
 #' @export
 bake.step_time_event <- function(object, new_data, ...) {
+  if (length(object$column) == 0L) {
+    # Empty selection
+    return(new_data)
+  }
 
   new_columns <- purrr::imap(object$columns, time_event_helper,
                              new_data, object$rules)
@@ -136,10 +140,18 @@ print.step_time_event <-
 #' @export
 tidy.step_time_event <- function(x, ...) {
   if (is_trained(x)) {
-    res <- tibble(terms = names(x$objects), rules = x$rules)
+    if (length(x$columns) == 0) {
+      res <- tibble(terms = character(), rules = list())
+    } else {
+      res <- tibble(terms = unname(x$columns), rules = unname(x$rules))
+    }
   } else {
     term_names <- sel2char(x$terms)
-    res <- tibble(terms = term_names, rules = x$rules)
+    if (length(x$columns) == 0) {
+      res <- tibble(terms = character(), rules = list())
+    } else {
+      res <- tibble(terms = term_names, rules = unname(x$rules))
+    }
   }
   res$id <- x$id
   res
