@@ -1,3 +1,7 @@
+url: https://emilhvitfeldt.github.io/extrasteps/
+template:
+  bootstrap: 5
+
 reference:
   - title: Datetime Steps
     contents:
