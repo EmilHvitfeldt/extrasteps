@@ -22,7 +22,8 @@ Imports:
     purrr,
     dplyr,
     generics
-URL: https://github.com/EmilHvitfeldt/extrasteps
+URL: https://github.com/EmilHvitfeldt/extrasteps,
+    https://emilhvitfeldt.github.io/extrasteps/
 BugReports: https://github.com/EmilHvitfeldt/extrasteps/issues
 Remotes: 
     tidymodels/recipes
