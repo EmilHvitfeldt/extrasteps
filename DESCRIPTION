@@ -21,7 +21,8 @@ Imports:
     almanac,
     purrr,
     dplyr,
-    generics
+    generics,
+    stringdist
 URL: https://github.com/EmilHvitfeldt/extrasteps,
     https://emilhvitfeldt.github.io/extrasteps/
 BugReports: https://github.com/EmilHvitfeldt/extrasteps/issues
