@@ -25,6 +25,9 @@
     <loc>https://emilhvitfeldt.github.io/extrasteps/reference/pipe.html</loc>
   </url>
   <url>
+    <loc>https://emilhvitfeldt.github.io/extrasteps/reference/step_combine_stringdist.html</loc>
+  </url>
+  <url>
     <loc>https://emilhvitfeldt.github.io/extrasteps/reference/step_date_after.html</loc>
   </url>
   <url>
@@ -35,6 +38,9 @@
   </url>
   <url>
     <loc>https://emilhvitfeldt.github.io/extrasteps/reference/step_difftime.html</loc>
+  </url>
+  <url>
+    <loc>https://emilhvitfeldt.github.io/extrasteps/reference/step_minmax.html</loc>
   </url>
   <url>
     <loc>https://emilhvitfeldt.github.io/extrasteps/reference/step_time_event.html</loc>
