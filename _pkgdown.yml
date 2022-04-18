@@ -10,6 +10,9 @@ reference:
     - step_date_after
     - step_date_before
     - step_date_nearest
+  - title: Normalization
+    contents:
+    - step_minmax
   - title: Meme Steps
     contents:
     - step_yeet
