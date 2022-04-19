@@ -9,6 +9,7 @@ step_robust(
   ...,
   role = NA,
   trained = FALSE,
+  range = c(0.25, 0.75),
   res = NULL,
   columns = NULL,
   skip = FALSE,
@@ -20,7 +21,7 @@ step_robust(
 sequence of operations for this recipe.}
 
 \item{...}{One or more selector functions to choose which variables are
-affected by the step. See \code{\link[=selections]{selections()}} for more details.  For the \code{tidy}
+affected by the step. See \code{\link[=selections]{selections()}} for more details. For the \code{tidy}
 method, these are not currently used.}
 
 \item{role}{Not used by this step since no new variables are
@@ -28,6 +29,9 @@ created.}
 
 \item{trained}{A logical to indicate if the quantities for
 preprocessing have been estimated.}
+
+\item{range}{A numeric vector with 2 values denoting the lower and upper
+quantile that is used for scaling. Defaults to \code{c(0.25, 0.75)}.}
 
 \item{res}{A list containing the 3 quantiles of training variables is stored
 here once this preprocessing step has be trained by \code{\link[=prep]{prep()}}.}
@@ -53,11 +57,29 @@ columns \code{terms} (the columns that will be affected) and \code{base}.
 \code{step_robust} creates a \emph{specification} of a recipe step that will perform
 Robust scaling.
 }
+\details{
+The scaling performed by this step is done using the following transformation
+
+\deqn{x_new = (x - Q2(x)) / (Q3(x) - Q1(x))}
+
+where \code{Q2(x)} is the median, \code{Q3(x)} is the upper quantile (defaults to 0.75)
+and \code{Q1(x)} is the lower quantile (defaults to 0.25). The upper and lower
+quantiles can be changed with the \code{range} argument.
+}
 \examples{
 library(recipes)
 
 rec <- recipe(~., data = mtcars) \%>\%
   step_robust(all_predictors()) \%>\%
+  prep()
+
+rec \%>\%
+  bake(new_data = NULL)
+
+tidy(rec, 1)
+
+rec <- recipe(~., data = mtcars) \%>\%
+  step_robust(all_predictors(), range = c(0.1, 0.9)) \%>\%
   prep()
 
 rec \%>\%

@@ -13,13 +13,29 @@ rec <- recipe(~ carbon + hydrogen + oxygen + nitrogen + sulfur,
               data = biomass
 )
 
-test_that("minmax works", {
+test_that("robust works", {
   standardized <- rec %>%
     step_robust(carbon, hydrogen, oxygen, nitrogen, sulfur, id = "") %>%
     prep() %>%
     bake(new_data = NULL)
 
   exp_ref <- (t(biomass[, 3:7]) - medians) / (higher - lower)
+
+  expect_equal(as.matrix(standardized), t(exp_ref))
+})
+
+test_that("range argument works", {
+  lower01 <- vapply(biomass[, 3:7], quantile, c(min = 0), prob = 0.1, na.rm = TRUE)
+  higher09 <- vapply(biomass[, 3:7], quantile, c(min = 0), prob = 0.9, na.rm = TRUE)
+
+
+  standardized <- rec %>%
+    step_robust(carbon, hydrogen, oxygen, nitrogen, sulfur,
+                range = c(0.1, 0.9)) %>%
+    prep() %>%
+    bake(new_data = NULL)
+
+  exp_ref <- (t(biomass[, 3:7]) - medians) / (higher09 - lower01)
 
   expect_equal(as.matrix(standardized), t(exp_ref))
 })
