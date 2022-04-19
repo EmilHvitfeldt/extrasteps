@@ -12,6 +12,7 @@ reference:
     - step_date_nearest
   - title: Normalization
     contents:
+    - step_maxabs
     - step_minmax
   - title: Level Collapsing
     contents:
