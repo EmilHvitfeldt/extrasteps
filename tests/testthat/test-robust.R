@@ -68,6 +68,12 @@ test_that("correct min and max", {
   expect_equal(tidy(standardized_trained, 1), norm_tibble_tr)
 })
 
+test_that("printing", {
+  rec <- recipe(~., data = mtcars) %>%
+    step_robust(all_predictors())
+  expect_snapshot(rec)
+  expect_snapshot(prep(rec))
+})
 
 test_that("normalize - empty selection prep/bake is a no-op", {
   rec1 <- recipe(mpg ~ ., mtcars)

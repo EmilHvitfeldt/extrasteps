@@ -39,6 +39,13 @@ test_that("robust works", {
   expect_equal(standardized_max, as_tibble(biomass_max))
 })
 
+test_that("printing", {
+  rec <- recipe(~., data = mtcars) %>%
+    step_unit_normalize(all_predictors())
+  expect_snapshot(rec)
+  expect_snapshot(prep(rec))
+})
+
 test_that("normalize - empty selection prep/bake is a no-op", {
   rec1 <- recipe(mpg ~ ., mtcars)
   rec2 <- step_unit_normalize(rec1)
