@@ -1,6 +1,18 @@
 library(testthat)
 library(recipes)
 
+test_that("printing", {
+  example_date <- data.frame(
+    dates = seq(as.Date("2010/1/1"), as.Date("2016/1/1"), by = "quarter")
+  )
+
+  rec <- recipe(~., data = example_date) %>%
+    step_difftime(dates, time = as.Date("2010/1/1"))
+  expect_snapshot(rec)
+  expect_snapshot(prep(rec))
+})
+
+
 test_that("empty selection prep/bake is a no-op", {
   rec1 <- recipe(mpg ~ ., mtcars)
   rec2 <- step_difftime(rec1, time = as.Date("2010/1/1"))
