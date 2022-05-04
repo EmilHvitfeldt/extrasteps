@@ -96,6 +96,17 @@ test_that("time_event errors", {
 
 })
 
+test_that("printing", {
+  on_weekends <- weekly() %>% recur_on_weekends()
+  on_weekdays <- weekly() %>% recur_on_weekdays()
+
+  rules <- list(weekend = on_weekends, weekday = on_weekdays)
+  rec <- recipe(~ date1, data = examples) %>%
+    step_time_event(date1, rules = rules)
+
+  expect_snapshot(rec)
+  expect_snapshot(prep(rec))
+})
 
 test_that("empty selection prep/bake is a no-op", {
   on_weekends <- weekly() %>% recur_on_weekends()

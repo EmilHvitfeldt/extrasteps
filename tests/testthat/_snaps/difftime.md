@@ -1,3 +1,37 @@
+# printing
+
+    Code
+      rec
+    Output
+      Recipe
+      
+      Inputs:
+      
+            role #variables
+       predictor          1
+      
+      Operations:
+      
+      transformation on dates
+
+---
+
+    Code
+      prep(rec)
+    Output
+      Recipe
+      
+      Inputs:
+      
+            role #variables
+       predictor          1
+      
+      Training data contained 25 data points and no missing data.
+      
+      Operations:
+      
+      transformation on dates [trained]
+
 # empty printing
 
     Code
