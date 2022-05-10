@@ -96,7 +96,7 @@ bake.step_unit_normalize <- function(object, new_data, ...) {
     norm = object$norm
   )
 
-  as_tibble(new_data)
+  new_data
 }
 
 unit_normalize_apply <- function(x, norm = c("l2", "l1", "max")) {

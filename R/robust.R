@@ -125,7 +125,7 @@ bake.step_robust <- function(object, new_data, ...) {
       object$res[[col_name]]
     )
   }
-  as_tibble(new_data)
+  new_data
 }
 
 robust_apply <- function(x, res) {

@@ -151,7 +151,7 @@ bake.step_combine_stringdist <- function(object, new_data, ...) {
         object$res[[i]]
       )
   }
-  as_tibble(new_data)
+  new_data
 }
 
 combine_apply <- function(x, dict) {
