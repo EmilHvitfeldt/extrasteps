@@ -97,7 +97,7 @@ bake.step_minmax <- function(object, new_data, ...) {
       object$res[[col_name]]
     )
   }
-  as_tibble(new_data)
+  new_data
 }
 
 minmax_apply <- function(x, res) {
