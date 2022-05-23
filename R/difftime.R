@@ -138,7 +138,7 @@ bake.step_difftime <- function(object, new_data, ...) {
                    object$unit)
         )
   }
-  as_tibble(new_data)
+  new_data
 }
 
 #' @export
