@@ -129,7 +129,8 @@ sequence of any existing operations.</p>
     <p>The <code>transform</code> argument can be function that takes a numeric vector and
 returns a numeric vector of the same length. It can also be a character
 vector, below is the supported vector names. Some functions come with offset
-to avoid <code>Inf</code>.</p><div class="sourceCode r"><pre><code><span><span class="st">"identity"</span></span>
+to avoid <code>Inf</code>.</p>
+<p></p><div class="sourceCode r"><pre><code><span><span class="st">"identity"</span></span>
 <span><span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span></span>
 <span></span>
 <span><span class="st">"inverse"</span></span>
@@ -142,7 +143,8 @@ to avoid <code>Inf</code>.</p><div class="sourceCode r"><pre><code><span><span c
 <span><span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">x</span> <span class="op">+</span> <span class="fl">0.5</span><span class="op">)</span></span></code></pre><p></p></div>
 <p>The effect of <code>transform</code> is illustrated below.</p>
 <p><img src="figures/date_after-1.png" alt=""><img src="figures/date_after-2.png" alt=""><img src="figures/date_after-3.png" alt=""><img src="figures/date_after-4.png" alt=""></p>
-<p>The naming of the resulting variables will be on the form</p><div class="sourceCode r"><pre><code>{variable name}_after_{name of rule}
+<p>The naming of the resulting variables will be on the form</p>
+<p></p><div class="sourceCode r"><pre><code>{variable name}_after_{name of rule}
 </code></pre><p></p></div>
     </div>
 
@@ -168,7 +170,7 @@ to avoid <code>Inf</code>.</p><div class="sourceCode r"><pre><code><span><span c
 <span class="r-in"><span><span class="fu"><a href="https://recipes.tidymodels.org/reference/bake.html" class="external-link">bake</a></span><span class="op">(</span><span class="va">rec_spec_preped</span>, new_data <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5,698 × 3</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    ridership date_after_easter date_after_weekend</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>     15.7                274                  1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>     15.8                275                  2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>     15.9                276                  3</span>
