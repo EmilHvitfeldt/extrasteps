@@ -238,7 +238,7 @@ date_nearest_helper <- function(columnn, name, new_data, rule, transform) {
     before <- alma_next(values, .x, inclusive = TRUE) - values
     after <- values - alma_previous(values, .x, inclusive = TRUE)
     res <- pmin(before, after)
-    res <- as.numeric(res)
+    res <- as.integer(res)
     res <- transform(res)
     res
   }
