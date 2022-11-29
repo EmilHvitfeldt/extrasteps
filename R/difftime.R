@@ -39,17 +39,17 @@
 #'
 #' difftime_obj <- prep(rec)
 #'
-#' juice(difftime_obj)
+#' bake(difftime_obj, new_data = NULL)
 #'
 #' recipe(~ dates, data = example_date) %>%
 #'   step_difftime(dates, time = as.Date("2010/1/1"), unit = "weeks") %>%
 #'   prep() %>%
-#'   juice()
+#'   bake(new_data = NULL)
 #'
 #' recipe(~ datetimes, data = example_datetime) %>%
 #'   step_difftime(datetimes, time = ISOdate(1993,1,1), unit = "secs") %>%
 #'   prep() %>%
-#'   juice()
+#'   bake(new_data = NULL)
 step_difftime <-
   function(recipe,
            ...,
