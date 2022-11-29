@@ -34,12 +34,11 @@
 #'   datetimes = seq(ISOdate(1993,1,1), ISOdate(1993,1,2), by = "hour")
 #'  )
 #'
-#'
 #' rec <- recipe(~ dates, data = example_date) %>%
 #'   step_difftime(dates, time = as.Date("2010/1/1"))
 #'
 #' difftime_obj <- prep(rec)
-
+#'
 #' juice(difftime_obj)
 #'
 #' recipe(~ dates, data = example_date) %>%
@@ -51,7 +50,6 @@
 #'   step_difftime(datetimes, time = ISOdate(1993,1,1), unit = "secs") %>%
 #'   prep() %>%
 #'   juice()
-#'
 step_difftime <-
   function(recipe,
            ...,
@@ -105,7 +103,7 @@ prep.step_difftime <- function(x, training, info = NULL, ...) {
   }
 
   date_data <- info[info$variable %in% col_names, ]
-  if (any(date_data$type != "date"))
+  if (any(purrr::map_lgl(date_data$type, ~!.x %in% c("date", "datetime"))))
     rlang::abort(
       paste0("All variables for `step_date` should be either `Date` or",
              "`POSIXct` classes."
