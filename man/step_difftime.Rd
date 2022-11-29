@@ -74,11 +74,11 @@ example_date <- data.frame(
   datetimes = seq(ISOdate(1993,1,1), ISOdate(1993,1,2), by = "hour")
  )
 
-
 rec <- recipe(~ dates, data = example_date) \%>\%
   step_difftime(dates, time = as.Date("2010/1/1"))
 
 difftime_obj <- prep(rec)
+
 juice(difftime_obj)
 
 recipe(~ dates, data = example_date) \%>\%
@@ -90,5 +90,4 @@ recipe(~ datetimes, data = example_datetime) \%>\%
   step_difftime(datetimes, time = ISOdate(1993,1,1), unit = "secs") \%>\%
   prep() \%>\%
   juice()
-
 }
