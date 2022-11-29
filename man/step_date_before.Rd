@@ -60,7 +60,9 @@ recurrent event.
 The \code{transform} argument can be function that takes a numeric vector and
 returns a numeric vector of the same length. It can also be a character
 vector, below is the supported vector names. Some functions come with offset
-to avoid \code{Inf}.\if{html}{\out{<div class="sourceCode r">}}\preformatted{"identity"
+to avoid \code{Inf}.
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{"identity"
 function(x) x
 
 "inverse"
@@ -77,7 +79,9 @@ The effect of \code{transform} is illustrated below.
 
 \figure{date_before-1.png}\figure{date_before-2.png}\figure{date_before-3.png}\figure{date_before-4.png}
 
-The naming of the resulting variables will be on the form\if{html}{\out{<div class="sourceCode r">}}\preformatted{\{variable name\}_before_\{name of rule\}
+The naming of the resulting variables will be on the form
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{\{variable name\}_before_\{name of rule\}
 }\if{html}{\out{</div>}}
 }
 \examples{
