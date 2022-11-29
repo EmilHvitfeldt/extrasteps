@@ -12,13 +12,12 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2.9000
+RoxygenNote: 7.2.2
 Imports: 
     recipes (>= 0.1.16.9000),
     tibble,
     magrittr,
     rlang,
-    almanac,
     purrr,
     dplyr,
     generics,
@@ -29,6 +28,7 @@ BugReports: https://github.com/EmilHvitfeldt/extrasteps/issues
 Remotes: 
     tidymodels/recipes
 Suggests: 
+    almanac,
     testthat (>= 3.0.0),
     modeldata,
     ggplot2
