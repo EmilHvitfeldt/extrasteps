@@ -2,34 +2,31 @@ Package: extrasteps
 Title: More Steps for the 'recipes' Package
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "Emil",
-           family = "Hvitfeldt",
-           role = c("aut", "cre"),
-           email = "emilhhvitfeldt@gmail.com",
+    person("Emil", "Hvitfeldt", , "emilhhvitfeldt@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-0679-1945"))
 Description: Contains additional steps for the 'recipes' package.
 License: MIT + file LICENSE
+URL: https://github.com/EmilHvitfeldt/extrasteps,
+    https://emilhvitfeldt.github.io/extrasteps/
+BugReports: https://github.com/EmilHvitfeldt/extrasteps/issues
+Imports: 
+    dplyr,
+    generics,
+    magrittr,
+    purrr,
+    recipes (>= 0.1.16.9000),
+    rlang,
+    stringdist,
+    tibble
+Suggests: 
+    almanac,
+    ggplot2,
+    modeldata,
+    testthat (>= 3.0.0)
+Remotes: 
+    tidymodels/recipes
+Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.2
-Imports: 
-    recipes (>= 0.1.16.9000),
-    tibble,
-    magrittr,
-    rlang,
-    purrr,
-    dplyr,
-    generics,
-    stringdist
-URL: https://github.com/EmilHvitfeldt/extrasteps,
-    https://emilhvitfeldt.github.io/extrasteps/
-BugReports: https://github.com/EmilHvitfeldt/extrasteps/issues
-Remotes: 
-    tidymodels/recipes
-Suggests: 
-    almanac,
-    testthat (>= 3.0.0),
-    modeldata,
-    ggplot2
-Config/testthat/edition: 3
