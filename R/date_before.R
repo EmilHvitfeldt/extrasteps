@@ -235,7 +235,7 @@ date_before_helper <- function(columnn, name, new_data, rule, transform) {
   res <- purrr::map_dfc(rule, ~ {
     values <- new_data[[columnn]]
     res <- alma_next(values, .x, inclusive = TRUE) - values
-    res <- as.numeric(res)
+    res <- as.integer(res)
     res <- transform(res)
     res
     }
