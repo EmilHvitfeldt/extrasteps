@@ -274,3 +274,9 @@ tidy.step_date_before <- function(x, ...) {
   res$id <- x$id
   res
 }
+
+#' @rdname required_pkgs.extrasteps
+#' @export
+required_pkgs.step_date_before <- function(x, ...) {
+  c("extrasteps", "almanac")
+}

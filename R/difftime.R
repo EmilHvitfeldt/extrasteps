@@ -161,3 +161,9 @@ tidy.step_difftime <- function(x, ...) {
   res$id <- x$id
   res
 }
+
+#' @rdname required_pkgs.extrasteps
+#' @export
+required_pkgs.step_difftime <- function(x, ...) {
+  c("extrasteps")
+}

@@ -115,3 +115,9 @@ tidy.step_yeet <- function (x, ...) {
   res$id <- x$id
   res
 }
+
+#' @rdname required_pkgs.extrasteps
+#' @export
+required_pkgs.step_yeet <- function(x, ...) {
+  c("extrasteps")
+}

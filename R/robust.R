@@ -161,3 +161,9 @@ tidy.step_robust <- function(x, ...) {
   res$id <- x$id
   res
 }
+
+#' @rdname required_pkgs.extrasteps
+#' @export
+required_pkgs.step_robust <- function(x, ...) {
+  c("extrasteps")
+}
