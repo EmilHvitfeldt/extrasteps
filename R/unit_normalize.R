@@ -140,3 +140,9 @@ tidy.step_unit_normalize <- function(x, ...) {
   res$id <- x$id
   res
 }
+
+#' @rdname required_pkgs.extrasteps
+#' @export
+required_pkgs.step_unit_normalize <- function(x, ...) {
+  c("extrasteps")
+}

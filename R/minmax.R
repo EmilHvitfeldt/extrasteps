@@ -133,3 +133,9 @@ tidy.step_minmax <- function(x, ...) {
   res$id <- x$id
   res
 }
+
+#' @rdname required_pkgs.extrasteps
+#' @export
+required_pkgs.step_minmax <- function(x, ...) {
+  c("extrasteps")
+}

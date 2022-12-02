@@ -277,3 +277,9 @@ tidy.step_date_nearest <- function(x, ...) {
   res$id <- x$id
   res
 }
+
+#' @rdname required_pkgs.extrasteps
+#' @export
+required_pkgs.step_date_nearest <- function(x, ...) {
+  c("extrasteps", "almanac")
+}
