@@ -186,3 +186,9 @@ tidy.step_combine_stringdist <- function(x, ...) {
   res$id <- x$id
   res
 }
+
+#' @rdname required_pkgs.extrasteps
+#' @export
+required_pkgs.step_combine_stringdist <- function(x, ...) {
+  c("extrasteps", "stringdist")
+}

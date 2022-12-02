@@ -156,3 +156,9 @@ tidy.step_time_event <- function(x, ...) {
   res$id <- x$id
   res
 }
+
+#' @rdname required_pkgs.extrasteps
+#' @export
+required_pkgs.step_time_event <- function(x, ...) {
+  c("extrasteps", "almanac")
+}
