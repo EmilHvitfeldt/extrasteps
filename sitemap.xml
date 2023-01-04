@@ -25,6 +25,12 @@
     <loc>https://emilhvitfeldt.github.io/extrasteps/reference/pipe.html</loc>
   </url>
   <url>
+    <loc>https://emilhvitfeldt.github.io/extrasteps/reference/reexports.html</loc>
+  </url>
+  <url>
+    <loc>https://emilhvitfeldt.github.io/extrasteps/reference/required_pkgs.extrasteps.html</loc>
+  </url>
+  <url>
     <loc>https://emilhvitfeldt.github.io/extrasteps/reference/step_combine_stringdist.html</loc>
   </url>
   <url>
@@ -38,6 +44,9 @@
   </url>
   <url>
     <loc>https://emilhvitfeldt.github.io/extrasteps/reference/step_difftime.html</loc>
+  </url>
+  <url>
+    <loc>https://emilhvitfeldt.github.io/extrasteps/reference/step_encoding_binary.html</loc>
   </url>
   <url>
     <loc>https://emilhvitfeldt.github.io/extrasteps/reference/step_maxabs.html</loc>
