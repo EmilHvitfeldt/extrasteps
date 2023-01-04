@@ -1,15 +1,14 @@
-#' Perform binary encoding of factor variables
+#' Perform frequency encoding
 #'
-#' `step_encoding_binary` creates a *specification* of a recipe step that will
-#' perform binary encoding of factor variables.
+#' `step_encoding_frequency` creates a *specification* of a recipe step that
+#' will perform frequency encoding.
 #'
 #' @inheritParams recipes::step_center
-#' @inheritParams recipes::step_dummy
 #' @param ... One or more selector functions to choose which variables are
 #'   affected by the step. See [selections()] for more details.  For the `tidy`
 #'   method, these are not currently used.
-#' @param res A list containing levels of training variables is stored
-#'   here once this preprocessing step has be trained by [prep()].
+#' @param res A list frequencies of the levels of the training variables is
+#'   stored here once this preprocessing step has be trained by [prep()].
 #' @param columns A character string of variable names that will be populated
 #'   (eventually) by the `terms` argument.
 #' @return An updated version of `recipe` with the new step added to the
@@ -23,144 +22,122 @@
 #' data(ames)
 #'
 #' rec <- recipe(~ Land_Contour + Neighborhood, data = ames) %>%
-#'   step_encoding_binary(all_nominal_predictors()) %>%
+#'   step_encoding_frequency(all_nominal_predictors()) %>%
 #'   prep()
 #'
 #' rec %>%
 #'   bake(new_data = NULL)
 #'
 #' tidy(rec, 1)
-step_encoding_binary <-
+step_encoding_frequency <-
   function(recipe,
            ...,
            role = NA,
            trained = FALSE,
            res = NULL,
            columns = NULL,
-           keep_original_cols = FALSE,
            skip = FALSE,
-           id = rand_id("encoding_binary")
+           id = rand_id("encoding_frequency")
   ) {
 
     add_step(
       recipe,
-      step_encoding_binary_new(
+      step_encoding_frequency_new(
         terms = enquos(...),
         role = role,
         trained = trained,
         res = res,
         columns = columns,
-        keep_original_cols = keep_original_cols,
         skip = skip,
         id = id
       )
     )
   }
 
-step_encoding_binary_new <-
-  function(terms, role, trained, res, columns, keep_original_cols, skip, id) {
+step_encoding_frequency_new <-
+  function(terms, role, trained, res, columns, skip, id) {
     step(
-      subclass = "encoding_binary",
+      subclass = "encoding_frequency",
       terms = terms,
       role = role,
       trained = trained,
       res = res,
       columns = columns,
-      keep_original_cols = keep_original_cols,
       skip = skip,
       id = id
     )
   }
 
 #' @export
-prep.step_encoding_binary <- function(x, training, info = NULL, ...) {
+prep.step_encoding_frequency <- function(x, training, info = NULL, ...) {
   col_names <- recipes_eval_select(x$terms, training, info)
 
   recipes::check_type(
     training[col_names, ],
-    types = c("factor", "ordered", "unordered"),
+    types = c("factor", "string"),
   )
 
-  values <- lapply(training[, col_names], encoding_binary_impl)
+  values <- lapply(training[, col_names], encoding_frequency_impl)
 
-  step_encoding_binary_new(
+  step_encoding_frequency_new(
     terms = x$terms,
     role = x$role,
     trained = TRUE,
     res = values,
     columns = col_names,
-    keep_original_cols = recipes::get_keep_original_cols(x),
     skip = x$skip,
     id = x$id
   )
 }
 
-encoding_binary_impl <- function(x) {
-  levels(x)
+encoding_frequency_impl <- function(x) {
+  table(x) / length(x)
 }
 
 #' @export
-bake.step_encoding_binary <- function(object, new_data, ...) {
+bake.step_encoding_frequency <- function(object, new_data, ...) {
   col_names <- object$columns
   # for backward compat
 
   for (col_name in col_names) {
-    new_cols <- encoding_binary_apply(
-      new_data[col_name],
+    new_data[[col_name]] <- encoding_frequency_apply(
+      new_data[[col_name]],
       object$res[[col_name]]
     )
-
-    keep_original_cols <- recipes::get_keep_original_cols(object)
-    if (!keep_original_cols) {
-      new_data <-
-        new_data[, !(colnames(new_data) %in% col_name), drop = FALSE]
-    }
-
-    new_data <- vctrs::vec_cbind(new_data, new_cols)
   }
   new_data
 }
 
-encoding_binary_apply <- function(x, lvls) {
-  n_cols <- ceiling(log2(length(lvls))) + 1
-
-  x_name <- names(x)
-  x <- x[[x_name]]
-
-  if (!identical(levels(x), lvls)) {
-    rlang::abort("levels doesn't match")
-  }
-
-  res <- t(sapply(as.integer(x), function(x){as.integer(intToBits(x))}))
-  res <- res[, seq_len(n_cols)]
-
-  colnames(res) <- paste(x_name, 2 ^ (seq_len(n_cols) - 1), sep = "_")
-
-  dplyr::as_tibble(res)
+encoding_frequency_apply <- function(x, freqs) {
+  res <- unname(freqs[x])
+  res[is.na(res)] <- 0
+  res
 }
 
 #' @export
-print.step_encoding_binary <-
+print.step_encoding_frequency <-
   function(x, width = max(20, options()$width - 31), ...) {
-    cat("Binary Encoding on ", sep = "")
+    cat("Frequency encoding on ", sep = "")
     printer(x$columns, x$terms, x$trained, width = width)
     invisible(x)
   }
 
 #' @rdname tidy.recipe
-#' @param x A `step_encoding_binary` object.
+#' @param x A `step_encoding_frequency` object.
 #' @export
-tidy.step_encoding_binary <- function(x, ...) {
+tidy.step_encoding_frequency <- function(x, ...) {
   if (is_trained(x)) {
     res <- tibble(
-      terms = names(x$res),
-      value = lengths(x$res)
+      terms = rep(names(x$res), lengths(x$res)),
+      level = names(unlist(unname(x$res))),
+      frequency = unname(unlist(unname(x$res)))
     )
   } else {
     term_names <- sel2char(x$terms)
     res <- tibble(
       terms = term_names,
-      value = NA_real_
+      level = NA_character_,
+      frequency = NA_real_
     )
   }
   res$id <- x$id
@@ -169,6 +146,6 @@ tidy.step_encoding_binary <- function(x, ...) {
 
 #' @rdname required_pkgs.extrasteps
 #' @export
-required_pkgs.step_encoding_binary <- function(x, ...) {
+required_pkgs.step_encoding_frequency <- function(x, ...) {
   c("extrasteps")
 }
