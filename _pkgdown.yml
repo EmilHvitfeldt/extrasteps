@@ -16,6 +16,9 @@ reference:
     - step_minmax
     - step_robust
     - step_unit_normalize
+  - title: Categorical Encoding
+    contents:
+    - step_encoding_binary
   - title: Level Collapsing
     contents:
     - step_combine_stringdist
