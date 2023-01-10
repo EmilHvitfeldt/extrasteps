@@ -110,6 +110,7 @@ bake.step_encoding_frequency <- function(object, new_data, ...) {
 
 encoding_frequency_apply <- function(x, freqs) {
   res <- unname(freqs[x])
+  res <- as.numeric(res)
   res[is.na(res)] <- 0
   res
 }
