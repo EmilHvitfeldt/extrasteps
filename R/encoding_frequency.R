@@ -73,7 +73,7 @@ prep.step_encoding_frequency <- function(x, training, info = NULL, ...) {
   col_names <- recipes_eval_select(x$terms, training, info)
 
   recipes::check_type(
-    training[col_names, ],
+    training[, col_names],
     types = c("factor", "string"),
   )
 
