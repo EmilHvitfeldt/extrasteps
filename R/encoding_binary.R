@@ -116,6 +116,8 @@ bake.step_encoding_binary <- function(object, new_data, ...) {
         new_data[, !(colnames(new_data) %in% col_name), drop = FALSE]
     }
 
+    new_cols <- check_name(new_cols, new_data, object, names(new_cols))
+
     new_data <- vctrs::vec_cbind(new_data, new_cols)
   }
   new_data
