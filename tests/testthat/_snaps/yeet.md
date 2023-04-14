@@ -2,33 +2,34 @@
 
     Code
       rec
+    Message <cliMessage>
+      
+      -- Recipe ----------------------------------------------------------------------
+      
+      -- Inputs 
+      Number of variables by role
+      predictor: 11
+      
+      -- Operations 
     Output
-      Recipe
-      
-      Inputs:
-      
-            role #variables
-       predictor         11
-      
-      Operations:
-      
       Delete terms has_type("date")
 
 ---
 
     Code
       prep(rec)
+    Message <cliMessage>
+      
+      -- Recipe ----------------------------------------------------------------------
+      
+      -- Inputs 
+      Number of variables by role
+      predictor: 11
+      
+      -- Training information 
+      Training data contained 32 data points and no incomplete rows.
+      
+      -- Operations 
     Output
-      Recipe
-      
-      Inputs:
-      
-            role #variables
-       predictor         11
-      
-      Training data contained 32 data points and no missing data.
-      
-      Operations:
-      
       No variables were removed [trained]
 
