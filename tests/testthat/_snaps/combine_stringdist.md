@@ -2,33 +2,34 @@
 
     Code
       rec
+    Message <cliMessage>
+      
+      -- Recipe ----------------------------------------------------------------------
+      
+      -- Inputs 
+      Number of variables by role
+      predictor: 2
+      
+      -- Operations 
     Output
-      Recipe
-      
-      Inputs:
-      
-            role #variables
-       predictor          2
-      
-      Operations:
-      
       transformation on all_predictors()
 
 ---
 
     Code
       prep(rec)
+    Message <cliMessage>
+      
+      -- Recipe ----------------------------------------------------------------------
+      
+      -- Inputs 
+      Number of variables by role
+      predictor: 2
+      
+      -- Training information 
+      Training data contained 6 data points and no incomplete rows.
+      
+      -- Operations 
     Output
-      Recipe
-      
-      Inputs:
-      
-            role #variables
-       predictor          2
-      
-      Training data contained 6 data points and no missing data.
-      
-      Operations:
-      
       transformation on x1, x2 [trained]
 
