@@ -9,12 +9,14 @@ License: MIT + file LICENSE
 URL: https://github.com/EmilHvitfeldt/extrasteps,
     https://emilhvitfeldt.github.io/extrasteps/
 BugReports: https://github.com/EmilHvitfeldt/extrasteps/issues
+Depends: 
+    R (>= 3.4),
+    recipes (>= 1.0.4)
 Imports: 
     dplyr,
     generics,
     magrittr,
     purrr,
-    recipes (>= 1.0.4),
     rlang,
     stringdist,
     tibble,
