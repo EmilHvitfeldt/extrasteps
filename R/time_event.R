@@ -112,10 +112,12 @@ bake.step_time_event <- function(object, new_data, ...) {
     return(new_data)
   }
 
-  new_columns <- purrr::imap(object$columns, time_event_helper,
-                             new_data, object$rules)
+  new_cols <- purrr::imap_dfc(object$columns, time_event_helper,
+                              new_data, object$rules)
 
-  new_data <- dplyr::bind_cols(new_data, new_columns)
+  new_cols <- check_name(new_cols, new_data, object, names(new_cols))
+
+  new_data <- dplyr::bind_cols(new_data, new_cols)
   new_data <- dplyr::select(new_data, -names(object$columns))
   new_data
 }
