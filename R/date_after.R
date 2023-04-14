@@ -223,10 +223,12 @@ bake.step_date_after <- function(object, new_data, ...) {
 
   transform <- fetch_date_transforms(object$transform)
 
-  new_columns <- purrr::imap(object$columns, date_after_helper,
-                             new_data, object$rules, transform)
+  new_cols <- purrr::imap_dfc(object$columns, date_after_helper,
+                              new_data, object$rules, transform)
 
-  new_data <- dplyr::bind_cols(new_data, new_columns)
+  new_cols <- check_name(new_cols, new_data, object, names(new_cols))
+
+  new_data <- dplyr::bind_cols(new_data, new_cols)
   new_data <- dplyr::select(new_data, -names(object$columns))
   new_data
 }
