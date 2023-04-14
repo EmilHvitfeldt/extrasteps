@@ -96,6 +96,24 @@ test_that("time_event errors", {
 
 })
 
+test_that("check_name() is used", {
+  dat <- examples
+  dat$date1_weekend <- dat$date1
+
+  on_weekends <- weekly() %>% recur_on_weekends()
+  on_weekdays <- weekly() %>% recur_on_weekdays()
+
+  rules <- list(weekend = on_weekends, weekday = on_weekdays)
+
+  rec <- recipe(~., data = dat) |>
+    step_time_event(date1, rules = rules)
+
+  expect_snapshot(
+    error = TRUE,
+    prep(rec, training = dat)
+  )
+})
+
 test_that("printing", {
   on_weekends <- weekly() %>% recur_on_weekends()
   on_weekdays <- weekly() %>% recur_on_weekdays()
