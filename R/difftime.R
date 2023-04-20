@@ -128,9 +128,9 @@ bake.step_difftime <- function(object, new_data, ...) {
   # for backward compat
 
   for (i in seq_along(col_names)) {
-      new_data[, col_names[i]] <-
+      new_data[[col_names[i]]] <-
         as.numeric(
-          difftime(new_data[[ col_names[i] ]],
+          difftime(new_data[[col_names[i]]],
                    object$time,
                    object$tz,
                    object$unit)
