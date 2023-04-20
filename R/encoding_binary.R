@@ -106,9 +106,11 @@ bake.step_encoding_binary <- function(object, new_data, ...) {
 
   for (col_name in col_names) {
     new_cols <- encoding_binary_apply(
-      new_data[col_name],
+      new_data[[col_name]],
       object$res[[col_name]]
     )
+
+    colnames(new_cols) <- paste(col_name, colnames(new_cols), sep = "_")
 
     keep_original_cols <- recipes::get_keep_original_cols(object)
     if (!keep_original_cols) {
@@ -126,9 +128,6 @@ bake.step_encoding_binary <- function(object, new_data, ...) {
 encoding_binary_apply <- function(x, lvls) {
   n_cols <- ceiling(log2(length(lvls))) + 1
 
-  x_name <- names(x)
-  x <- x[[x_name]]
-
   if (!identical(levels(x), lvls)) {
     rlang::abort("levels doesn't match")
   }
@@ -136,7 +135,7 @@ encoding_binary_apply <- function(x, lvls) {
   res <- t(sapply(as.integer(x), function(x){as.integer(intToBits(x))}))
   res <- res[, seq_len(n_cols)]
 
-  colnames(res) <- paste(x_name, 2 ^ (seq_len(n_cols) - 1), sep = "_")
+  colnames(res) <- 2 ^ (seq_len(n_cols) - 1)
 
   dplyr::as_tibble(res)
 }

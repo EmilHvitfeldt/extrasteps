@@ -120,7 +120,7 @@ bake.step_robust <- function(object, new_data, ...) {
   # for backward compat
 
   for (col_name in col_names) {
-    new_data[, col_name] <- robust_apply(
+    new_data[[col_name]] <- robust_apply(
       new_data[[col_name]],
       object$res[[col_name]]
     )

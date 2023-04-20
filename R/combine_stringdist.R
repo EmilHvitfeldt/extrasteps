@@ -146,7 +146,7 @@ bake.step_combine_stringdist <- function(object, new_data, ...) {
   # for backward compat
 
   for (i in seq_along(col_names)) {
-    new_data[, col_names[i]] <- combine_apply(
+    new_data[[col_names[i]]] <- combine_apply(
         new_data[[col_names[i]]],
         object$res[[i]]
       )
