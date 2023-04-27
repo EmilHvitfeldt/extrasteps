@@ -9,12 +9,12 @@ rec <- recipe(~., data = data0) %>%
   step_combine_stringdist(all_predictors(), distance = 1) %>%
   prep()
 
+# Infrastructure ---------------------------------------------------------------
+
 test_that("printing", {
   rec <- recipe(~., data = data0) %>%
     step_combine_stringdist(all_predictors(), distance = 1)
 
-  expect_snapshot(rec)
+  expect_snapshot(print(rec))
   expect_snapshot(prep(rec))
 })
-
-# Infrastructure ---------------------------------------------------------------

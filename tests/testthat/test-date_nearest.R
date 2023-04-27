@@ -178,18 +178,6 @@ test_that("check_name() is used", {
   )
 })
 
-test_that("printing", {
-  on_weekends <- weekly() %>% recur_on_weekends()
-  on_weekdays <- weekly() %>% recur_on_weekdays()
-
-  rules <- list(weekend = on_weekends, weekday = on_weekdays)
-  rec <- recipe(~ date1, data = examples) %>%
-    step_date_nearest(date1, rules = rules)
-
-  expect_snapshot(rec)
-  expect_snapshot(prep(rec))
-})
-
 # Infrastructure ---------------------------------------------------------------
 
 test_that("empty printing", {
@@ -242,4 +230,16 @@ test_that("empty selection tidy method works", {
   rec <- prep(rec, mtcars)
 
   expect_identical(tidy(rec, number = 1), expect)
+})
+
+test_that("printing", {
+  on_weekends <- weekly() %>% recur_on_weekends()
+  on_weekdays <- weekly() %>% recur_on_weekdays()
+
+  rules <- list(weekend = on_weekends, weekday = on_weekdays)
+  rec <- recipe(~ date1, data = examples) %>%
+    step_date_nearest(date1, rules = rules)
+
+  expect_snapshot(print(rec))
+  expect_snapshot(prep(rec))
 })
