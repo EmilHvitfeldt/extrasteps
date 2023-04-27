@@ -12,6 +12,18 @@ test_that("printing", {
   expect_snapshot(prep(rec))
 })
 
+# Infrastructure ---------------------------------------------------------------
+
+test_that("empty printing", {
+  rec <- recipe(mpg ~ ., mtcars)
+  rec <- step_difftime(rec, time = as.Date("2010/1/1"))
+
+  expect_snapshot(rec)
+
+  rec <- prep(rec, mtcars)
+
+  expect_snapshot(rec)
+})
 
 test_that("empty selection prep/bake is a no-op", {
   rec1 <- recipe(mpg ~ ., mtcars)
@@ -30,28 +42,11 @@ test_that("empty selection tidy method works", {
   rec <- recipe(mpg ~ ., mtcars)
   rec <- step_difftime(rec, time = as.Date("2010/1/1"))
 
-  expect_identical(
-    tidy(rec, number = 1),
-    tibble(terms = character(), id = character())
-  )
+  expect <- tibble(terms = character(), id = character())
+
+  expect_identical(tidy(rec, number = 1), expect)
 
   rec <- prep(rec, mtcars)
 
-  expect_identical(
-    tidy(rec, number = 1),
-    tibble(terms = character(), id = character())
-  )
-})
-
-# Infrastructure ---------------------------------------------------------------
-
-test_that("empty printing", {
-  rec <- recipe(mpg ~ ., mtcars)
-  rec <- step_difftime(rec, time = as.Date("2010/1/1"))
-
-  expect_snapshot(rec)
-
-  rec <- prep(rec, mtcars)
-
-  expect_snapshot(rec)
+  expect_identical(tidy(rec, number = 1), expect)
 })
