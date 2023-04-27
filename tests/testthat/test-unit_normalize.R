@@ -86,3 +86,5 @@ test_that("normalize - empty printing", {
 
   expect_snapshot(rec)
 })
+
+# Infrastructure ---------------------------------------------------------------

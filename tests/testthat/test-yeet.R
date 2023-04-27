@@ -6,3 +6,5 @@ test_that("printing", {
   expect_snapshot(rec)
   expect_snapshot(prep(rec))
 })
+
+# Infrastructure ---------------------------------------------------------------
