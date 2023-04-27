@@ -1,7 +1,7 @@
 # printing
 
     Code
-      rec
+      print(rec)
     Message <cliMessage>
       
       -- Recipe ----------------------------------------------------------------------
