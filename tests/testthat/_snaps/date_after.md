@@ -8,41 +8,6 @@
       ! Name collision occured. The following variable names already exists:
       i  date1_after_weekend
 
-# printing
-
-    Code
-      rec
-    Message <cliMessage>
-      
-      -- Recipe ----------------------------------------------------------------------
-      
-      -- Inputs 
-      Number of variables by role
-      predictor: 1
-      
-      -- Operations 
-    Output
-      Time events from date1
-
----
-
-    Code
-      prep(rec)
-    Message <cliMessage>
-      
-      -- Recipe ----------------------------------------------------------------------
-      
-      -- Inputs 
-      Number of variables by role
-      predictor: 1
-      
-      -- Training information 
-      Training data contained 20 data points and no incomplete rows.
-      
-      -- Operations 
-    Output
-      Time events from date1 [trained]
-
 # empty printing
 
     Code
@@ -79,4 +44,39 @@
       -- Operations 
     Output
       Time events from <none> [trained]
+
+# printing
+
+    Code
+      print(rec)
+    Message <cliMessage>
+      
+      -- Recipe ----------------------------------------------------------------------
+      
+      -- Inputs 
+      Number of variables by role
+      predictor: 1
+      
+      -- Operations 
+    Output
+      Time events from date1
+
+---
+
+    Code
+      prep(rec)
+    Message <cliMessage>
+      
+      -- Recipe ----------------------------------------------------------------------
+      
+      -- Inputs 
+      Number of variables by role
+      predictor: 1
+      
+      -- Training information 
+      Training data contained 20 data points and no incomplete rows.
+      
+      -- Operations 
+    Output
+      Time events from date1 [trained]
 
