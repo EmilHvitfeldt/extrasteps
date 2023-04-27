@@ -1,17 +1,6 @@
 library(testthat)
 library(recipes)
 
-test_that("printing", {
-  example_date <- data.frame(
-    dates = seq(as.Date("2010/1/1"), as.Date("2016/1/1"), by = "quarter")
-  )
-
-  rec <- recipe(~., data = example_date) %>%
-    step_difftime(dates, time = as.Date("2010/1/1"))
-  expect_snapshot(rec)
-  expect_snapshot(prep(rec))
-})
-
 # Infrastructure ---------------------------------------------------------------
 
 test_that("empty printing", {
@@ -49,4 +38,16 @@ test_that("empty selection tidy method works", {
   rec <- prep(rec, mtcars)
 
   expect_identical(tidy(rec, number = 1), expect)
+})
+
+test_that("printing", {
+  example_date <- data.frame(
+    dates = seq(as.Date("2010/1/1"), as.Date("2016/1/1"), by = "quarter")
+  )
+
+  rec <- recipe(~., data = example_date) %>%
+    step_difftime(dates, time = as.Date("2010/1/1"))
+
+  expect_snapshot(print(rec))
+  expect_snapshot(prep(rec))
 })
