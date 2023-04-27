@@ -106,8 +106,9 @@ test_that("normalize - empty selection tidy method works", {
   expect_identical(tidy(rec, number = 1), expect)
 })
 
-test_that("normalize - empty printing", {
-  skip_if(packageVersion("rlang") < "1.0.0")
+# Infrastructure ---------------------------------------------------------------
+
+test_that("empty printing", {
   rec <- recipe(mpg ~ ., mtcars)
   rec <- step_robust(rec)
 
@@ -117,5 +118,3 @@ test_that("normalize - empty printing", {
 
   expect_snapshot(rec)
 })
-
-# Infrastructure ---------------------------------------------------------------
