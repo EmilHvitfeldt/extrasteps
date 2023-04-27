@@ -46,7 +46,20 @@ test_that("printing", {
   expect_snapshot(prep(rec))
 })
 
-test_that("normalize - empty selection prep/bake is a no-op", {
+# Infrastructure ---------------------------------------------------------------
+
+test_that("empty printing", {
+  rec <- recipe(mpg ~ ., mtcars)
+  rec <- step_unit_normalize(rec)
+
+  expect_snapshot(rec)
+
+  rec <- prep(rec, mtcars)
+
+  expect_snapshot(rec)
+})
+
+test_that("empty selection prep/bake is a no-op", {
   rec1 <- recipe(mpg ~ ., mtcars)
   rec2 <- step_unit_normalize(rec1)
 
@@ -59,31 +72,15 @@ test_that("normalize - empty selection prep/bake is a no-op", {
   expect_identical(baked1, baked2)
 })
 
-test_that("normalize - empty selection tidy method works", {
+test_that("empty selection tidy method works", {
   rec <- recipe(mpg ~ ., mtcars)
   rec <- step_unit_normalize(rec)
 
-  expect <- tibble(
-    terms = character(),
-    id = character()
-  )
+  expect <- tibble(terms = character(), id = character())
 
   expect_identical(tidy(rec, number = 1), expect)
 
   rec <- prep(rec, mtcars)
 
   expect_identical(tidy(rec, number = 1), expect)
-})
-
-# Infrastructure ---------------------------------------------------------------
-
-test_that("empty printing", {
-  rec <- recipe(mpg ~ ., mtcars)
-  rec <- step_unit_normalize(rec)
-
-  expect_snapshot(rec)
-
-  rec <- prep(rec, mtcars)
-
-  expect_snapshot(rec)
 })
