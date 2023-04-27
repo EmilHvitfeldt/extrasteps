@@ -4,8 +4,9 @@
       prep(rec, training = dat)
     Error <recipes_error_step>
       Error in `step_date_nearest()`:
-      Caused by error in `check_name()`:
-      ! Name collision occured in `step_date_nearest`. The following variable names already exists: date1_nearest_weekend.
+      Caused by error in `bake()`:
+      ! Name collision occured. The following variable names already exists:
+      i  date1_nearest_weekend
 
 # printing
 
