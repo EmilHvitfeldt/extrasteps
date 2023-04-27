@@ -10,3 +10,5 @@ test_that("check_name() is used", {
     prep(rec, training = dat)
   )
 })
+
+# Infrastructure ---------------------------------------------------------------
