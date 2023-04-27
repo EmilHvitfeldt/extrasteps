@@ -166,6 +166,8 @@ test_that("empty selection tidy method works", {
   )
 })
 
+# Infrastructure ---------------------------------------------------------------
+
 test_that("empty printing", {
   on_weekends <- weekly() %>% recur_on_weekends()
   on_weekdays <- weekly() %>% recur_on_weekdays()
@@ -181,5 +183,3 @@ test_that("empty printing", {
 
   expect_snapshot(rec)
 })
-
-# Infrastructure ---------------------------------------------------------------

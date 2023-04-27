@@ -43,6 +43,8 @@ test_that("empty selection tidy method works", {
   )
 })
 
+# Infrastructure ---------------------------------------------------------------
+
 test_that("empty printing", {
   rec <- recipe(mpg ~ ., mtcars)
   rec <- step_difftime(rec, time = as.Date("2010/1/1"))
@@ -53,5 +55,3 @@ test_that("empty printing", {
 
   expect_snapshot(rec)
 })
-
-# Infrastructure ---------------------------------------------------------------
