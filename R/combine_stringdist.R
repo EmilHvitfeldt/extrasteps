@@ -1,7 +1,7 @@
 #' Combine factor levels using stringdist
 #'
-#' `step_combine_stringdist` creates a *specification* of a recipe step
-#'  that will combine factor levels that have a low stringdist between them.
+#' `step_combine_stringdist()` creates a *specification* of a recipe step that
+#' will combine factor levels that have a low stringdist between them.
 #'
 #' @inheritParams recipes::step_center
 #' @param ... One or more selector functions to choose which

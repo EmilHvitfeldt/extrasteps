@@ -1,6 +1,6 @@
 #' Perform Max Abs Scaling
 #'
-#' `step_maxabs` creates a *specification* of a recipe step that will perform
+#' `step_maxabs()` creates a *specification* of a recipe step that will perform
 #' Max Abs scaling.
 #'
 #' @inheritParams recipes::step_center

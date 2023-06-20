@@ -48,9 +48,8 @@ An updated version of \code{recipe} with the new check added to the
 sequence of any existing operations.
 }
 \description{
-\code{step_time_event} creates a \emph{specification} of a recipe
-step that will create new columns indicating if the date fall on
-recurrent event.
+\code{step_time_event()} creates a \emph{specification} of a recipe step that will
+create new columns indicating if the date fall on recurrent event.
 }
 \examples{
 library(recipes)

@@ -57,8 +57,8 @@ added to the sequence of existing steps (if any). For the
 columns that will be affected) and \code{base}.
 }
 \description{
-\code{step_combine_stringdist} creates a \emph{specification} of a recipe step
-that will combine factor levels that have a low stringdist between them.
+\code{step_combine_stringdist()} creates a \emph{specification} of a recipe step that
+will combine factor levels that have a low stringdist between them.
 }
 \examples{
 library(recipes)

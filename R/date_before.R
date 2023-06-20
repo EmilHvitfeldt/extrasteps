@@ -1,8 +1,7 @@
 #' Time before Recurrent Date Time Event
 #'
-#' `step_date_before` creates a *specification* of a recipe
-#'  step that will create new columns indicating the time before an
-#'  recurrent event.
+#' `step_date_before()` creates a *specification* of a recipe step that will
+#' create new columns indicating the time before an recurrent event.
 #'
 #' @inheritParams recipes::step_center
 #' @param rules Named list of `almanac` rules.

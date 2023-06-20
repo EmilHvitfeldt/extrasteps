@@ -1,8 +1,7 @@
 #' Indicate Recurrent Date Time Event
 #'
-#' `step_time_event` creates a *specification* of a recipe
-#'  step that will create new columns indicating if the date fall on
-#'  recurrent event.
+#' `step_time_event()` creates a *specification* of a recipe step that will
+#' create new columns indicating if the date fall on recurrent event.
 #'
 #' @inheritParams recipes::step_center
 #' @param rules Named list of `almanac` rules.

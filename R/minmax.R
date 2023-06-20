@@ -1,6 +1,6 @@
 #' Perform Min Max Scaling
 #'
-#' `step_minmax` creates a *specification* of a recipe step that will perform
+#' `step_minmax()` creates a *specification* of a recipe step that will perform
 #' Min Max scaling.
 #'
 #' @inheritParams recipes::step_center

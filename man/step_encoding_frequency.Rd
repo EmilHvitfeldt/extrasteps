@@ -50,7 +50,7 @@ sequence of existing steps (if any). For the \code{tidy} method, a tibble with
 columns \code{terms} (the columns that will be affected) and \code{base}.
 }
 \description{
-\code{step_encoding_frequency} creates a \emph{specification} of a recipe step that
+\code{step_encoding_frequency()} creates a \emph{specification} of a recipe step that
 will perform frequency encoding.
 }
 \examples{

@@ -52,9 +52,8 @@ An updated version of \code{recipe} with the new check added to the
 sequence of any existing operations.
 }
 \description{
-\code{step_date_before} creates a \emph{specification} of a recipe
-step that will create new columns indicating the time before an
-recurrent event.
+\code{step_date_before()} creates a \emph{specification} of a recipe step that will
+create new columns indicating the time before an recurrent event.
 }
 \details{
 The \code{transform} argument can be function that takes a numeric vector and

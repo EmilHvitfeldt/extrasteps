@@ -1,6 +1,6 @@
 #' Perform frequency encoding
 #'
-#' `step_encoding_frequency` creates a *specification* of a recipe step that
+#' `step_encoding_frequency()` creates a *specification* of a recipe step that
 #' will perform frequency encoding.
 #'
 #' @inheritParams recipes::step_center

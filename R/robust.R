@@ -1,6 +1,6 @@
 #' Perform Robust Scaling
 #'
-#' `step_robust` creates a *specification* of a recipe step that will perform
+#' `step_robust()` creates a *specification* of a recipe step that will perform
 #' Robust scaling.
 #'
 #' @inheritParams recipes::step_center

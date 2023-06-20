@@ -54,7 +54,7 @@ sequence of existing steps (if any). For the \code{tidy} method, a tibble with
 columns \code{terms} (the columns that will be affected) and \code{base}.
 }
 \description{
-\code{step_robust} creates a \emph{specification} of a recipe step that will perform
+\code{step_robust()} creates a \emph{specification} of a recipe step that will perform
 Robust scaling.
 }
 \details{

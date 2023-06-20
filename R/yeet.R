@@ -1,7 +1,7 @@
 #' Removes date and datetimes variables
 #'
-#' `step_yeet` creates a *specification* of a recipe step
-#'  that will remove date and datetime variables. (This is a meme)
+#' `step_yeet()` creates a *specification* of a recipe step that will remove
+#' date and datetime variables. (This is a meme)
 #'
 #' @inheritParams recipes::step_center
 #' @param removals A character string that contains the names of
