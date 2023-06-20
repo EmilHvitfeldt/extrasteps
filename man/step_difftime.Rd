@@ -61,8 +61,8 @@ added to the sequence of existing steps (if any). For the
 columns that will be affected) and \code{base}.
 }
 \description{
-\code{step_difftime} creates a \emph{specification} of a recipe step
-that will calculate difftimes of the data.
+\code{step_difftime()} creates a \emph{specification} of a recipe step that will
+calculate difftimes of the data.
 }
 \examples{
 library(recipes)

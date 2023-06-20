@@ -1,6 +1,6 @@
 #' Perform Unit Normalization
 #'
-#' `step_unit_normalize` creates a *specification* of a recipe step that will
+#' `step_unit_normalize()` creates a *specification* of a recipe step that will
 #' perform unit normalization by scaling individual samples to have unit norm.
 #'
 #' @inheritParams recipes::step_center

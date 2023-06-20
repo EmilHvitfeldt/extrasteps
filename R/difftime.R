@@ -1,7 +1,7 @@
 #' difftimearithmic Transformation
 #'
-#' `step_difftime` creates a *specification* of a recipe step
-#'  that will calculate difftimes of the data.
+#' `step_difftime()` creates a *specification* of a recipe step that will
+#' calculate difftimes of the data.
 #'
 #' @inheritParams recipes::step_center
 #' @param ... One or more selector functions to choose which

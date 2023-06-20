@@ -45,8 +45,8 @@ An updated version of \code{recipe} with the new step added to the
 sequence of any existing operations.
 }
 \description{
-\code{step_yeet} creates a \emph{specification} of a recipe step
-that will remove date and datetime variables. (This is a meme)
+\code{step_yeet()} creates a \emph{specification} of a recipe step that will remove
+date and datetime variables. (This is a meme)
 }
 \examples{
 library(recipes)

@@ -1,8 +1,7 @@
 #' Time after Recurrent Date Time Event
 #'
-#' `step_date_after` creates a *specification* of a recipe
-#'  step that will create new columns indicating the time after an
-#'  recurrent event.
+#' `step_date_after()` creates a *specification* of a recipe step that will
+#' create new columns indicating the time after an recurrent event.
 #'
 #' @inheritParams recipes::step_center
 #' @param rules Named list of `almanac` rules.

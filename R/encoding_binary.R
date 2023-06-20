@@ -1,6 +1,6 @@
 #' Perform binary encoding of factor variables
 #'
-#' `step_encoding_binary` creates a *specification* of a recipe step that will
+#' `step_encoding_binary()` creates a *specification* of a recipe step that will
 #' perform binary encoding of factor variables.
 #'
 #' @inheritParams recipes::step_center
