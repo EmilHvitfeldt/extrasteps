@@ -122,7 +122,7 @@ bake.step_time_event <- function(object, new_data, ...) {
 }
 
 time_event_helper <- function(columnn, name, new_data, rule) {
-  res <- purrr::map_dfc(rule, ~ alma_in(new_data[[columnn]], .x))
+  res <- purrr::map_dfc(rule, ~ as.integer(alma_in(new_data[[columnn]], .x)))
 
   names(res) <- paste(name, names(res), sep = "_")
   res
