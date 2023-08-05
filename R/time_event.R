@@ -4,6 +4,7 @@
 #' create new columns indicating if the date fall on recurrent event.
 #'
 #' @inheritParams recipes::step_center
+#' @inheritParams recipes::step_date
 #' @param rules Named list of `almanac` rules.
 #' @param columns A character string of variables that will be
 #'  used as inputs. This field is a placeholder and will be
@@ -11,6 +12,9 @@
 #' @return An updated version of `recipe` with the new check added to the
 #'  sequence of any existing operations.
 #' @export
+#' @details Unlike some other steps `step_time_event` does *not* remove the
+#' original date variables by default. Set `keep_original_cols` to `FALSE` to
+#' remove them.
 #'
 #' @examples
 #' library(recipes)
