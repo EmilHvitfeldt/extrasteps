@@ -11,6 +11,7 @@ step_time_event(
   trained = FALSE,
   rules = list(),
   columns = NULL,
+  keep_original_cols = TRUE,
   skip = FALSE,
   id = rand_id("time_event")
 )
@@ -34,6 +35,9 @@ preprocessing have been estimated.}
 used as inputs. This field is a placeholder and will be
 populated once \code{\link[=prep.recipe]{prep.recipe()}} is used.}
 
+\item{keep_original_cols}{A logical to keep the original variables in the
+output. Defaults to \code{TRUE}.}
+
 \item{skip}{A logical. Should the step be skipped when the
 recipe is baked by \code{\link[recipes:bake]{bake()}}? While all operations are baked
 when \code{\link[recipes:prep]{prep()}} is run, some operations may not be able to be
@@ -50,6 +54,11 @@ sequence of any existing operations.
 \description{
 \code{step_time_event()} creates a \emph{specification} of a recipe step that will
 create new columns indicating if the date fall on recurrent event.
+}
+\details{
+Unlike some other steps \code{step_time_event} does \emph{not} remove the
+original date variables by default. Set \code{keep_original_cols} to \code{FALSE} to
+remove them.
 }
 \examples{
 library(recipes)
