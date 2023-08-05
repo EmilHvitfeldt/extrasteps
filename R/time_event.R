@@ -87,7 +87,7 @@ prep.step_time_event <- function(x, training, info = NULL, ...) {
     )
   }
 
-  if (!all(purrr::map_lgl(x$rules, inherits, "rschedule"))) {
+  if (!all(purrr::map_lgl(x$rules, inherits, "almanac_rschedule"))) {
     rlang::abort(
       "All `rules` must be `rschedule`s from {almanac}"
     )
