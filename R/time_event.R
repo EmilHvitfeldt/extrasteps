@@ -122,7 +122,7 @@ bake.step_time_event <- function(object, new_data, ...) {
     )
 
     names(tmp) <- paste(col_name, names(tmp), sep = "_")
-    tmp <- purrr::map_dfc(tmp, vctrs::vec_cast, integer())
+    tmp[] <- lapply(X = tmp, FUN = vctrs::vec_cast, integer())
 
     tmp <- check_name(tmp, new_data, object, names(tmp))
     new_data <- vctrs::vec_cbind(new_data, tmp)
@@ -133,7 +133,7 @@ bake.step_time_event <- function(object, new_data, ...) {
 }
 
 get_time_events <- function(rules, column, name, new_data) {
-  res <- purrr::map(rules, ~ alma_in(new_data[[column]], .x))
+  res <- lapply(X = rules, FUN = \(x) almanac::alma_in(new_data[[column]],x))
   res <- as_tibble(res)
   res
 }
