@@ -19,7 +19,7 @@ test_that("time_event works", {
 
   res <- bake(rec_spec, new_data = NULL)
 
-  expect_equal(names(res), c("date1","date1_weekend", "date1_weekday"))
+  expect_equal(names(res), c("date1_weekend", "date1_weekday"))
 
   expect_equal(
     vctrs::vec_cast(alma_in(examples$date1, on_weekdays), integer()),
@@ -42,8 +42,7 @@ test_that("time_event works with multiple columns", {
 
   res <- bake(rec_spec, new_data = NULL)
 
-  expect_equal(names(res), c("date1", "date2",
-                             "date1_weekend", "date1_weekday",
+  expect_equal(names(res), c("date1_weekend", "date1_weekday",
                              "date2_weekend", "date2_weekday"))
 
   expect_equal(
