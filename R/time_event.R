@@ -42,7 +42,7 @@ step_time_event <-
            trained = FALSE,
            rules = list(),
            columns = NULL,
-           keep_original_cols = TRUE,
+           keep_original_cols = FALSE,
            skip = FALSE,
            id = rand_id("time_event")) {
 
@@ -117,7 +117,7 @@ bake.step_time_event <- function(object, new_data, ...) {
   col_names <- names(object$columns)
   check_new_data(col_names, object, new_data)
 
-  for (col_name in col_names){
+  for (col_name in col_names) {
     tmp <- get_time_events(
       rules = object$rules,
       column = object$columns[col_name],
@@ -137,7 +137,7 @@ bake.step_time_event <- function(object, new_data, ...) {
 }
 
 get_time_events <- function(rules, column, name, new_data) {
-  res <- lapply(X = rules, FUN = \(x) almanac::alma_in(new_data[[column]],x))
+  res <- lapply(X = rules, FUN = function(x) almanac::alma_in(new_data[[column]],x))
   res <- as_tibble(res)
   res
 }
