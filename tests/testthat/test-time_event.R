@@ -22,11 +22,11 @@ test_that("time_event works", {
   expect_equal(names(res), c("date1_weekend", "date1_weekday"))
 
   expect_equal(
-    alma_in(examples$date1, on_weekdays),
+    vctrs::vec_cast(alma_in(examples$date1, on_weekdays), integer()),
     res$date1_weekday
   )
   expect_equal(
-    alma_in(examples$date1, on_weekends),
+    vctrs::vec_cast(alma_in(examples$date1, on_weekends), integer()),
     res$date1_weekend
   )
 })
@@ -46,19 +46,19 @@ test_that("time_event works with multiple columns", {
                              "date2_weekend", "date2_weekday"))
 
   expect_equal(
-    alma_in(examples$date1, on_weekdays),
+    vctrs::vec_cast(alma_in(examples$date1, on_weekdays), integer()),
     res$date1_weekday
   )
   expect_equal(
-    alma_in(examples$date1, on_weekends),
+    vctrs::vec_cast(alma_in(examples$date1, on_weekends), integer()),
     res$date1_weekend
   )
   expect_equal(
-    alma_in(examples$date2, on_weekdays),
+    vctrs::vec_cast(alma_in(examples$date2, on_weekdays), integer()),
     res$date2_weekday
   )
   expect_equal(
-    alma_in(examples$date2, on_weekends),
+    vctrs::vec_cast(alma_in(examples$date2, on_weekends), integer()),
     res$date2_weekend
   )
 })
