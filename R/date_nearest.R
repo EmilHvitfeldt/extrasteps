@@ -48,7 +48,7 @@
 #' date1 = as.Date("2021-01-01") + 0:13
 #' )
 #'
-#' mondays <- weekly() %>% recur_on_wday("Monday")
+#' mondays <- weekly() %>% recur_on_day_of_week("Monday")
 #'
 #' recipe(~., data = examples) %>%
 #'   step_date_nearest(date1,
