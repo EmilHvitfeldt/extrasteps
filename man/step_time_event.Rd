@@ -11,7 +11,7 @@ step_time_event(
   trained = FALSE,
   rules = list(),
   columns = NULL,
-  keep_original_cols = TRUE,
+  keep_original_cols = FALSE,
   skip = FALSE,
   id = rand_id("time_event")
 )
