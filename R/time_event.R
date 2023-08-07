@@ -4,6 +4,7 @@
 #' create new columns indicating if the date fall on recurrent event.
 #'
 #' @inheritParams recipes::step_center
+#' @inheritParams recipes::step_date
 #' @param rules Named list of `almanac` rules.
 #' @param columns A character string of variables that will be
 #'  used as inputs. This field is a placeholder and will be
@@ -11,6 +12,9 @@
 #' @return An updated version of `recipe` with the new check added to the
 #'  sequence of any existing operations.
 #' @export
+#' @details Unlike some other steps `step_time_event` does *not* remove the
+#' original date variables by default. Set `keep_original_cols` to `FALSE` to
+#' remove them.
 #'
 #' @examples
 #' library(recipes)
@@ -38,6 +42,7 @@ step_time_event <-
            trained = FALSE,
            rules = list(),
            columns = NULL,
+           keep_original_cols = FALSE,
            skip = FALSE,
            id = rand_id("time_event")) {
 
@@ -49,6 +54,7 @@ step_time_event <-
         role = role,
         rules = rules,
         columns = columns,
+        keep_original_cols = keep_original_cols,
         skip = skip,
         id = id
       )
@@ -56,7 +62,7 @@ step_time_event <-
   }
 
 step_time_event_new <-
-  function(terms, role, trained, rules, columns, skip, id) {
+  function(terms, role, trained, rules, columns, keep_original_cols, skip, id) {
     step(
       subclass = "time_event",
       terms = terms,
@@ -64,6 +70,7 @@ step_time_event_new <-
       trained = trained,
       rules = rules,
       columns = columns,
+      keep_original_cols = keep_original_cols,
       skip = skip,
       id = id
     )
@@ -99,6 +106,7 @@ prep.step_time_event <- function(x, training, info = NULL, ...) {
     trained = TRUE,
     rules = x$rules,
     columns = col_names,
+    keep_original_cols = get_keep_original_cols(x),
     skip = x$skip,
     id = x$id
   )
@@ -106,25 +114,31 @@ prep.step_time_event <- function(x, training, info = NULL, ...) {
 
 #' @export
 bake.step_time_event <- function(object, new_data, ...) {
-  if (length(object$column) == 0L) {
-    # Empty selection
-    return(new_data)
+  col_names <- names(object$columns)
+  check_new_data(col_names, object, new_data)
+
+  for (col_name in col_names) {
+    tmp <- get_time_events(
+      rules = object$rules,
+      column = object$columns[col_name],
+      name = col_name,
+      new_data = new_data
+    )
+
+    names(tmp) <- paste(col_name, names(tmp), sep = "_")
+    tmp[] <- lapply(X = tmp, FUN = vctrs::vec_cast, integer())
+
+    tmp <- check_name(tmp, new_data, object, names(tmp))
+    new_data <- vctrs::vec_cbind(new_data, tmp)
   }
 
-  new_cols <- purrr::imap_dfc(object$columns, time_event_helper,
-                              new_data, object$rules)
-
-  new_cols <- check_name(new_cols, new_data, object, names(new_cols))
-
-  new_data <- dplyr::bind_cols(new_data, new_cols)
-  new_data <- dplyr::select(new_data, -names(object$columns))
+  new_data <- remove_original_cols(new_data, object, col_names)
   new_data
 }
 
-time_event_helper <- function(columnn, name, new_data, rule) {
-  res <- purrr::map_dfc(rule, ~ alma_in(new_data[[columnn]], .x))
-
-  names(res) <- paste(name, names(res), sep = "_")
+get_time_events <- function(rules, column, name, new_data) {
+  res <- lapply(X = rules, FUN = function(x) almanac::alma_in(new_data[[column]],x))
+  res <- as_tibble(res)
   res
 }
 
