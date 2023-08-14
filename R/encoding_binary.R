@@ -112,16 +112,13 @@ bake.step_encoding_binary <- function(object, new_data, ...) {
 
     colnames(new_cols) <- paste(col_name, colnames(new_cols), sep = "_")
 
-    keep_original_cols <- recipes::get_keep_original_cols(object)
-    if (!keep_original_cols) {
-      new_data <-
-        new_data[, !(colnames(new_data) %in% col_name), drop = FALSE]
-    }
-
     new_cols <- check_name(new_cols, new_data, object, names(new_cols))
 
     new_data <- vctrs::vec_cbind(new_data, new_cols)
   }
+
+  new_data <- remove_original_cols(new_data, object, col_names)
+
   new_data
 }
 
