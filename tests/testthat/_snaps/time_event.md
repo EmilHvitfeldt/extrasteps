@@ -2,17 +2,17 @@
 
     Code
       prep(rec, training = dat)
-    Error <recipes_error_step>
+    Condition
       Error in `step_time_event()`:
       Caused by error in `bake()`:
-      ! Name collision occured. The following variable names already exists:
-      i  date1_weekend
+      ! Name collision occurred. The following variable names already exist:
+      * `date1_weekend`
 
 # empty printing
 
     Code
       rec
-    Message <cliMessage>
+    Message
       
       -- Recipe ----------------------------------------------------------------------
       
@@ -23,13 +23,13 @@
       
       -- Operations 
     Output
-      Time events from <none>
+      Time events from 
 
 ---
 
     Code
       rec
-    Message <cliMessage>
+    Message
       
       -- Recipe ----------------------------------------------------------------------
       
@@ -43,13 +43,13 @@
       
       -- Operations 
     Output
-      Time events from <none> [trained]
+      Time events from  [trained]
 
 # printing
 
     Code
       print(rec)
-    Message <cliMessage>
+    Message
       
       -- Recipe ----------------------------------------------------------------------
       
@@ -65,7 +65,7 @@
 
     Code
       prep(rec)
-    Message <cliMessage>
+    Message
       
       -- Recipe ----------------------------------------------------------------------
       

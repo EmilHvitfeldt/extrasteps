@@ -2,7 +2,7 @@
 
     Code
       rec
-    Message <cliMessage>
+    Message
       
       -- Recipe ----------------------------------------------------------------------
       
@@ -13,13 +13,13 @@
       
       -- Operations 
     Output
-      Max Abs scaling on <none>
+      Max Abs scaling on 
 
 ---
 
     Code
       rec
-    Message <cliMessage>
+    Message
       
       -- Recipe ----------------------------------------------------------------------
       
@@ -33,13 +33,13 @@
       
       -- Operations 
     Output
-      Max Abs scaling on <none> [trained]
+      Max Abs scaling on  [trained]
 
 # printing
 
     Code
       print(rec)
-    Message <cliMessage>
+    Message
       
       -- Recipe ----------------------------------------------------------------------
       
@@ -55,7 +55,7 @@
 
     Code
       prep(rec)
-    Message <cliMessage>
+    Message
       
       -- Recipe ----------------------------------------------------------------------
       
