@@ -2,6 +2,7 @@
 % Please edit documentation in R/yeet.R
 \name{step_yeet}
 \alias{step_yeet}
+\alias{tidy.step_yeet}
 \title{Removes date and datetimes variables}
 \usage{
 step_yeet(

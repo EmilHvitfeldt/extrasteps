@@ -2,6 +2,7 @@
 % Please edit documentation in R/date_before.R
 \name{step_date_before}
 \alias{step_date_before}
+\alias{tidy.step_date_before}
 \title{Time before Recurrent Date Time Event}
 \usage{
 step_date_before(

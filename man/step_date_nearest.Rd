@@ -2,6 +2,7 @@
 % Please edit documentation in R/date_nearest.R
 \name{step_date_nearest}
 \alias{step_date_nearest}
+\alias{tidy.step_date_nearest}
 \title{Time to Nearest Recurrent Date Time Event}
 \usage{
 step_date_nearest(

@@ -254,8 +254,8 @@ print.step_date_after <-
     invisible(x)
   }
 
-#' @rdname tidy.recipe
-#' @param x A `step_date_after` object.
+#' @rdname step_date_after
+#' @usage NULL
 #' @export
 tidy.step_date_after <- function(x, ...) {
   if (is_trained(x)) {

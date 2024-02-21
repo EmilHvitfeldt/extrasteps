@@ -2,6 +2,7 @@
 % Please edit documentation in R/difftime.R
 \name{step_difftime}
 \alias{step_difftime}
+\alias{tidy.step_difftime}
 \title{difftimearithmic Transformation}
 \usage{
 step_difftime(

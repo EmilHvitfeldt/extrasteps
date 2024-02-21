@@ -112,8 +112,8 @@ print.step_maxabs <-
     invisible(x)
   }
 
-#' @rdname tidy.recipe
-#' @param x A `step_maxabs` object.
+#' @rdname step_maxabs
+#' @usage NULL
 #' @export
 tidy.step_maxabs <- function(x, ...) {
   if (is_trained(x)) {

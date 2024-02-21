@@ -123,8 +123,8 @@ print.step_unit_normalize <-
     invisible(x)
   }
 
-#' @rdname tidy.recipe
-#' @param x A `step_unit_normalize` object.
+#' @rdname step_unit_normalize
+#' @usage NULL
 #' @export
 tidy.step_unit_normalize <- function(x, ...) {
   if (is_trained(x)) {

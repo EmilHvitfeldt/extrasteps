@@ -169,8 +169,8 @@ print.step_combine_stringdist <-
     invisible(x)
   }
 
-#' @rdname tidy.recipe
-#' @param x A `step_combine_stringdist` object.
+#' @rdname step_combine_stringdist
+#' @usage NULL
 #' @export
 tidy.step_combine_stringdist <- function(x, ...) {
   if (is_trained(x)) {

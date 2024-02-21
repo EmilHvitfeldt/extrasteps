@@ -2,6 +2,7 @@
 % Please edit documentation in R/encoding_frequency.R
 \name{step_encoding_frequency}
 \alias{step_encoding_frequency}
+\alias{tidy.step_encoding_frequency}
 \title{Perform frequency encoding}
 \usage{
 step_encoding_frequency(

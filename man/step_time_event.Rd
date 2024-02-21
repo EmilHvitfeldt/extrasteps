@@ -2,6 +2,7 @@
 % Please edit documentation in R/time_event.R
 \name{step_time_event}
 \alias{step_time_event}
+\alias{tidy.step_time_event}
 \title{Indicate Recurrent Date Time Event}
 \usage{
 step_time_event(

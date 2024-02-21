@@ -123,8 +123,8 @@ print.step_encoding_frequency <-
     invisible(x)
   }
 
-#' @rdname tidy.recipe
-#' @param x A `step_encoding_frequency` object.
+#' @rdname step_encoding_frequency
+#' @usage NULL
 #' @export
 tidy.step_encoding_frequency <- function(x, ...) {
   if (is_trained(x)) {

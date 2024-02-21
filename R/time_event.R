@@ -150,8 +150,8 @@ print.step_time_event <-
     invisible(x)
   }
 
-#' @rdname tidy.recipe
-#' @param x A `step_time_event` object.
+#' @rdname step_time_event
+#' @usage NULL
 #' @export
 tidy.step_time_event <- function(x, ...) {
   if (is_trained(x)) {

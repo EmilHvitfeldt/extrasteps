@@ -140,8 +140,8 @@ print.step_robust <-
     invisible(x)
   }
 
-#' @rdname tidy.recipe
-#' @param x A `step_robust` object.
+#' @rdname step_robust
+#' @usage NULL
 #' @export
 tidy.step_robust <- function(x, ...) {
   if (is_trained(x)) {

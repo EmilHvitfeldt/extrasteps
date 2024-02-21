@@ -2,6 +2,7 @@
 % Please edit documentation in R/maxabs.R
 \name{step_maxabs}
 \alias{step_maxabs}
+\alias{tidy.step_maxabs}
 \title{Perform Max Abs Scaling}
 \usage{
 step_maxabs(
