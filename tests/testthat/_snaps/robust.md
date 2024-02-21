@@ -2,7 +2,7 @@
 
     Code
       rec
-    Message <cliMessage>
+    Message
       
       -- Recipe ----------------------------------------------------------------------
       
@@ -13,13 +13,13 @@
       
       -- Operations 
     Output
-      Robust scaling on <none>
+      Robust scaling on 
 
 ---
 
     Code
       rec
-    Message <cliMessage>
+    Message
       
       -- Recipe ----------------------------------------------------------------------
       
@@ -33,13 +33,13 @@
       
       -- Operations 
     Output
-      Robust scaling on <none> [trained]
+      Robust scaling on  [trained]
 
 # printing
 
     Code
       print(rec)
-    Message <cliMessage>
+    Message
       
       -- Recipe ----------------------------------------------------------------------
       
@@ -55,7 +55,7 @@
 
     Code
       prep(rec)
-    Message <cliMessage>
+    Message
       
       -- Recipe ----------------------------------------------------------------------
       
