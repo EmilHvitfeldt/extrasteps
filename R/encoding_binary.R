@@ -145,8 +145,8 @@ print.step_encoding_binary <-
     invisible(x)
   }
 
-#' @rdname tidy.recipe
-#' @param x A `step_encoding_binary` object.
+#' @rdname step_encoding_binary
+#' @usage NULL
 #' @export
 tidy.step_encoding_binary <- function(x, ...) {
   if (is_trained(x)) {

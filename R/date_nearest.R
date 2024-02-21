@@ -257,8 +257,8 @@ print.step_date_nearest <-
     invisible(x)
   }
 
-#' @rdname tidy.recipe
-#' @param x A `step_date_nearest` object.
+#' @rdname step_date_nearest
+#' @usage NULL
 #' @export
 tidy.step_date_nearest <- function(x, ...) {
   if (is_trained(x)) {

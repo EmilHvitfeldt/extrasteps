@@ -112,8 +112,8 @@ print.step_minmax <-
     invisible(x)
   }
 
-#' @rdname tidy.recipe
-#' @param x A `step_minmax` object.
+#' @rdname step_minmax
+#' @usage NULL
 #' @export
 tidy.step_minmax <- function(x, ...) {
   if (is_trained(x)) {

@@ -2,6 +2,7 @@
 % Please edit documentation in R/encoding_binary.R
 \name{step_encoding_binary}
 \alias{step_encoding_binary}
+\alias{tidy.step_encoding_binary}
 \title{Perform binary encoding of factor variables}
 \usage{
 step_encoding_binary(

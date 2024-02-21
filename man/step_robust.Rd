@@ -2,6 +2,7 @@
 % Please edit documentation in R/robust.R
 \name{step_robust}
 \alias{step_robust}
+\alias{tidy.step_robust}
 \title{Perform Robust Scaling}
 \usage{
 step_robust(

@@ -2,6 +2,7 @@
 % Please edit documentation in R/date_after.R
 \name{step_date_after}
 \alias{step_date_after}
+\alias{tidy.step_date_after}
 \title{Time after Recurrent Date Time Event}
 \usage{
 step_date_after(

@@ -148,8 +148,8 @@ print.step_difftime <-
     invisible(x)
   }
 
-#' @rdname tidy.recipe
-#' @param x A `step_difftime` object.
+#' @rdname step_difftime
+#' @usage NULL
 #' @export
 tidy.step_difftime <- function(x, ...) {
   if (is_trained(x)) {

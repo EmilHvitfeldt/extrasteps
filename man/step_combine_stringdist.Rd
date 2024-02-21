@@ -2,6 +2,7 @@
 % Please edit documentation in R/combine_stringdist.R
 \name{step_combine_stringdist}
 \alias{step_combine_stringdist}
+\alias{tidy.step_combine_stringdist}
 \title{Combine factor levels using stringdist}
 \usage{
 step_combine_stringdist(

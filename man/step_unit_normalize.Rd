@@ -2,6 +2,7 @@
 % Please edit documentation in R/unit_normalize.R
 \name{step_unit_normalize}
 \alias{step_unit_normalize}
+\alias{tidy.step_unit_normalize}
 \title{Perform Unit Normalization}
 \usage{
 step_unit_normalize(

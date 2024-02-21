@@ -2,6 +2,7 @@
 % Please edit documentation in R/minmax.R
 \name{step_minmax}
 \alias{step_minmax}
+\alias{tidy.step_minmax}
 \title{Perform Min Max Scaling}
 \usage{
 step_minmax(
