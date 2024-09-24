@@ -133,25 +133,29 @@ test_that("time_event errors", {
 
   rules <- list(weekend = on_weekends, weekday = on_weekdays)
 
-  expect_error(
+  expect_snapshot(
+    error = TRUE,
     recipe(~ ., data = examples) %>%
       step_date_nearest(numeric, rules = rules) %>%
       prep()
   )
 
-  expect_error(
+  expect_snapshot(
+    error = TRUE,
     recipe(~ ., data = examples) %>%
       step_date_nearest(date1, rules = "wrong") %>%
       prep()
   )
 
-  expect_error(
+  expect_snapshot(
+    error = TRUE,
     recipe(~ ., data = examples) %>%
       step_date_nearest(date1, rules = list(weekend = on_weekends, "Hello")) %>%
       prep()
   )
 
-  expect_error(
+  expect_snapshot(
+    error = TRUE,
     recipe(~ ., data = examples) %>%
       step_date_nearest(date1, rules = list(weekend = on_weekends,
                                           christmas = "2020-12-25")) %>%
