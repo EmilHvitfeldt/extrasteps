@@ -1,3 +1,43 @@
+# time_event errors
+
+    Code
+      recipe(~., data = examples) %>% step_time_event(numeric, rules = rules) %>%
+        prep()
+    Condition
+      Error in `step_time_event()`:
+      Caused by error in `prep()`:
+      ! All variables for `step_date` should be either `Date` or`POSIXct` classes.
+
+---
+
+    Code
+      recipe(~., data = examples) %>% step_time_event(date1, rules = "wrong") %>%
+        prep()
+    Condition
+      Error in `step_time_event()`:
+      Caused by error in `prep()`:
+      ! `rules` must be a named list.
+
+---
+
+    Code
+      recipe(~., data = examples) %>% step_time_event(date1, rules = list(weekend = on_weekends,
+        "Hello")) %>% prep()
+    Condition
+      Error in `step_time_event()`:
+      Caused by error in `prep()`:
+      ! All `rules` must be `rschedule`s from {almanac}
+
+---
+
+    Code
+      recipe(~., data = examples) %>% step_time_event(date1, rules = list(weekend = on_weekends,
+        christmas = "2020-12-25")) %>% prep()
+    Condition
+      Error in `step_time_event()`:
+      Caused by error in `prep()`:
+      ! All `rules` must be `rschedule`s from {almanac}
+
 # check_name() is used
 
     Code
