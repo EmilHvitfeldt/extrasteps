@@ -1,75 +1,27 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://emilhvitfeldt.github.io/extrasteps/404.html</loc>
-  </url>
-  <url>
-    <loc>https://emilhvitfeldt.github.io/extrasteps/CODE_OF_CONDUCT.html</loc>
-  </url>
-  <url>
-    <loc>https://emilhvitfeldt.github.io/extrasteps/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://emilhvitfeldt.github.io/extrasteps/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://emilhvitfeldt.github.io/extrasteps/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://emilhvitfeldt.github.io/extrasteps/index.html</loc>
-  </url>
-  <url>
-    <loc>https://emilhvitfeldt.github.io/extrasteps/reference/extrasteps-package.html</loc>
-  </url>
-  <url>
-    <loc>https://emilhvitfeldt.github.io/extrasteps/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://emilhvitfeldt.github.io/extrasteps/reference/pipe.html</loc>
-  </url>
-  <url>
-    <loc>https://emilhvitfeldt.github.io/extrasteps/reference/reexports.html</loc>
-  </url>
-  <url>
-    <loc>https://emilhvitfeldt.github.io/extrasteps/reference/required_pkgs.extrasteps.html</loc>
-  </url>
-  <url>
-    <loc>https://emilhvitfeldt.github.io/extrasteps/reference/step_combine_stringdist.html</loc>
-  </url>
-  <url>
-    <loc>https://emilhvitfeldt.github.io/extrasteps/reference/step_date_after.html</loc>
-  </url>
-  <url>
-    <loc>https://emilhvitfeldt.github.io/extrasteps/reference/step_date_before.html</loc>
-  </url>
-  <url>
-    <loc>https://emilhvitfeldt.github.io/extrasteps/reference/step_date_nearest.html</loc>
-  </url>
-  <url>
-    <loc>https://emilhvitfeldt.github.io/extrasteps/reference/step_difftime.html</loc>
-  </url>
-  <url>
-    <loc>https://emilhvitfeldt.github.io/extrasteps/reference/step_encoding_binary.html</loc>
-  </url>
-  <url>
-    <loc>https://emilhvitfeldt.github.io/extrasteps/reference/step_encoding_frequency.html</loc>
-  </url>
-  <url>
-    <loc>https://emilhvitfeldt.github.io/extrasteps/reference/step_maxabs.html</loc>
-  </url>
-  <url>
-    <loc>https://emilhvitfeldt.github.io/extrasteps/reference/step_minmax.html</loc>
-  </url>
-  <url>
-    <loc>https://emilhvitfeldt.github.io/extrasteps/reference/step_robust.html</loc>
-  </url>
-  <url>
-    <loc>https://emilhvitfeldt.github.io/extrasteps/reference/step_time_event.html</loc>
-  </url>
-  <url>
-    <loc>https://emilhvitfeldt.github.io/extrasteps/reference/step_unit_normalize.html</loc>
-  </url>
-  <url>
-    <loc>https://emilhvitfeldt.github.io/extrasteps/reference/step_yeet.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://emilhvitfeldt.github.io/extrasteps/404.html</loc></url>
+<url><loc>https://emilhvitfeldt.github.io/extrasteps/CODE_OF_CONDUCT.html</loc></url>
+<url><loc>https://emilhvitfeldt.github.io/extrasteps/LICENSE-text.html</loc></url>
+<url><loc>https://emilhvitfeldt.github.io/extrasteps/LICENSE.html</loc></url>
+<url><loc>https://emilhvitfeldt.github.io/extrasteps/authors.html</loc></url>
+<url><loc>https://emilhvitfeldt.github.io/extrasteps/index.html</loc></url>
+<url><loc>https://emilhvitfeldt.github.io/extrasteps/reference/extrasteps-package.html</loc></url>
+<url><loc>https://emilhvitfeldt.github.io/extrasteps/reference/index.html</loc></url>
+<url><loc>https://emilhvitfeldt.github.io/extrasteps/reference/pipe.html</loc></url>
+<url><loc>https://emilhvitfeldt.github.io/extrasteps/reference/reexports.html</loc></url>
+<url><loc>https://emilhvitfeldt.github.io/extrasteps/reference/required_pkgs.extrasteps.html</loc></url>
+<url><loc>https://emilhvitfeldt.github.io/extrasteps/reference/step_combine_stringdist.html</loc></url>
+<url><loc>https://emilhvitfeldt.github.io/extrasteps/reference/step_date_after.html</loc></url>
+<url><loc>https://emilhvitfeldt.github.io/extrasteps/reference/step_date_before.html</loc></url>
+<url><loc>https://emilhvitfeldt.github.io/extrasteps/reference/step_date_nearest.html</loc></url>
+<url><loc>https://emilhvitfeldt.github.io/extrasteps/reference/step_difftime.html</loc></url>
+<url><loc>https://emilhvitfeldt.github.io/extrasteps/reference/step_encoding_binary.html</loc></url>
+<url><loc>https://emilhvitfeldt.github.io/extrasteps/reference/step_encoding_frequency.html</loc></url>
+<url><loc>https://emilhvitfeldt.github.io/extrasteps/reference/step_maxabs.html</loc></url>
+<url><loc>https://emilhvitfeldt.github.io/extrasteps/reference/step_minmax.html</loc></url>
+<url><loc>https://emilhvitfeldt.github.io/extrasteps/reference/step_robust.html</loc></url>
+<url><loc>https://emilhvitfeldt.github.io/extrasteps/reference/step_time_event.html</loc></url>
+<url><loc>https://emilhvitfeldt.github.io/extrasteps/reference/step_unit_normalize.html</loc></url>
+<url><loc>https://emilhvitfeldt.github.io/extrasteps/reference/step_yeet.html</loc></url>
 </urlset>
+
