@@ -22,7 +22,7 @@ step_robust(
 sequence of operations for this recipe.}
 
 \item{...}{One or more selector functions to choose which variables are
-affected by the step. See \code{\link[=selections]{selections()}} for more details. For the \code{tidy}
+affected by the step. See \code{\link[recipes:selections]{recipes::selections()}} for more details. For the \code{tidy}
 method, these are not currently used.}
 
 \item{role}{Not used by this step since no new variables are
@@ -35,7 +35,7 @@ preprocessing have been estimated.}
 quantile that is used for scaling. Defaults to \code{c(0.25, 0.75)}.}
 
 \item{res}{A list containing the 3 quantiles of training variables is stored
-here once this preprocessing step has be trained by \code{\link[=prep]{prep()}}.}
+here once this preprocessing step has be trained by \code{\link[recipes:prep]{recipes::prep()}}.}
 
 \item{columns}{A character string of variable names that will be populated
 (eventually) by the \code{terms} argument.}

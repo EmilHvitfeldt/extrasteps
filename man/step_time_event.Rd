@@ -34,7 +34,7 @@ preprocessing have been estimated.}
 
 \item{columns}{A character string of variables that will be
 used as inputs. This field is a placeholder and will be
-populated once \code{\link[=prep.recipe]{prep.recipe()}} is used.}
+populated once \code{\link[recipes:prep]{recipes::prep.recipe()}} is used.}
 
 \item{keep_original_cols}{A logical to keep the original variables in the
 output. Defaults to \code{TRUE}.}

@@ -23,7 +23,7 @@ step_difftime(
 sequence of operations for this recipe.}
 
 \item{...}{One or more selector functions to choose which
-variables are affected by the step. See \code{\link[=selections]{selections()}}
+variables are affected by the step. See \code{\link[recipes:selections]{recipes::selections()}}
 for more details.  For the \code{tidy} method, these are not
 currently used.}
 

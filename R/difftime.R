@@ -5,7 +5,7 @@
 #'
 #' @inheritParams recipes::step_center
 #' @param ... One or more selector functions to choose which
-#'  variables are affected by the step. See [selections()]
+#'  variables are affected by the step. See [recipes::selections()]
 #'  for more details.  For the `tidy` method, these are not
 #'  currently used.
 #' @param role Not used by this step since no new variables are
