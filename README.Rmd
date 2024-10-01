@@ -19,11 +19,14 @@ knitr::opts_chunk$set(
 [![R-CMD-check](https://github.com/EmilHvitfeldt/extrasteps/workflows/R-CMD-check/badge.svg)](https://github.com/EmilHvitfeldt/extrasteps/actions)
 <!-- badges: end -->
 
-The goal of extrasteps is to provide additional steps for [recipes](https://github.com/tidymodels/recipes).
+The goal of extrasteps is to provide additional steps for [recipes](https://github.com/tidymodels/recipes). These steps are located in this package because they don't fit well in [recipes](https://recipes.tidymodels.org/) or [any of the](https://textrecipes.tidymodels.org/) [extension](https://embed.tidymodels.org/) [packages](https://themis.tidymodels.org/).
+
+> [!IMPORTANT]  
+> These steps work, but they are not tested as rigorously as the steps in tidymodels packages. Hence why they are in this package. Also note that steps can graduate from {extrasteps} to {recipes}, if they prove their worth.
 
 ## Installation
 
-~~You can install the released version of extrasteps from [CRAN](https://CRAN.R-project.org) with:~~
+You can install the released version of extrasteps from [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
 install.packages("extrasteps")
