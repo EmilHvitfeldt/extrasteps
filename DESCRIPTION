@@ -1,10 +1,12 @@
 Package: extrasteps
-Title: More Steps for the 'recipes' Package
+Title: More Miscellaneous Steps for the 'recipes' Package
 Version: 0.0.0.9000
 Authors@R: 
     person("Emil", "Hvitfeldt", , "emilhhvitfeldt@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-0679-1945"))
-Description: Contains additional steps for the 'recipes' package.
+Description: Contains additional miscellaneous steps for the 'recipes' package.
+    These steps are useful, but doesn't have a good home in other 'recipes'
+    packages or its extensions.
 License: MIT + file LICENSE
 URL: https://github.com/EmilHvitfeldt/extrasteps,
     https://emilhvitfeldt.github.io/extrasteps/
