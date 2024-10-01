@@ -20,9 +20,3 @@ reference:
     contents:
     - step_encoding_binary
     - step_encoding_frequency
-  - title: Level Collapsing
-    contents:
-    - step_combine_stringdist
-  - title: Meme Steps
-    contents:
-    - step_yeet
