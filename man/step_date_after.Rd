@@ -37,7 +37,7 @@ resulting variables. See details for allowed names and their functions.}
 
 \item{columns}{A character string of variables that will be
 used as inputs. This field is a placeholder and will be
-populated once \code{\link[=prep.recipe]{prep.recipe()}} is used.}
+populated once \code{\link[recipes:prep]{recipes::prep.recipe()}} is used.}
 
 \item{skip}{A logical. Should the step be skipped when the
 recipe is baked by \code{\link[recipes:bake]{bake()}}? While all operations are baked
