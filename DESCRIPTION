@@ -10,7 +10,7 @@ URL: https://github.com/EmilHvitfeldt/extrasteps,
     https://emilhvitfeldt.github.io/extrasteps/
 BugReports: https://github.com/EmilHvitfeldt/extrasteps/issues
 Depends: 
-    R (>= 3.4),
+    R (>= 3.6),
     recipes (>= 1.0.7)
 Imports: 
     dplyr,
@@ -25,8 +25,6 @@ Suggests:
     ggplot2,
     modeldata,
     testthat (>= 3.0.0)
-Remotes: 
-    tidymodels/recipes
 Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
