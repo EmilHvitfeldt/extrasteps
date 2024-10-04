@@ -4,9 +4,9 @@
 \name{extrasteps-package}
 \alias{extrasteps}
 \alias{extrasteps-package}
-\title{extrasteps: More Steps for the 'recipes' Package}
+\title{extrasteps: More Miscellaneous Steps for the 'recipes' Package}
 \description{
-Contains additional steps for the 'recipes' package.
+Contains additional miscellaneous steps for the 'recipes' package. These steps are useful, but doesn't have a good home in other 'recipes' packages or its extensions.
 }
 \seealso{
 Useful links:
