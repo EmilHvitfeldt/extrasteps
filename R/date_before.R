@@ -9,7 +9,7 @@
 #'  resulting variables. See details for allowed names and their functions.
 #' @param columns A character string of variables that will be
 #'  used as inputs. This field is a placeholder and will be
-#'  populated once [prep.recipe()] is used.
+#'  populated once [recipes::prep.recipe()] is used.
 #' @return An updated version of `recipe` with the new check added to the
 #'  sequence of any existing operations.
 #' @export

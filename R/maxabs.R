@@ -5,10 +5,10 @@
 #'
 #' @inheritParams recipes::step_center
 #' @param ... One or more selector functions to choose which variables are
-#'   affected by the step. See [selections()] for more details.  For the `tidy`
+#'   affected by the step. See [recipes::selections()] for more details.  For the `tidy`
 #'   method, these are not currently used.
 #' @param res A list containing absolute max of training variables is stored
-#'   here once this preprocessing step has be trained by [prep()].
+#'   here once this preprocessing step has be trained by [recipes::prep()].
 #' @param columns A character string of variable names that will be populated
 #'   (eventually) by the `terms` argument.
 #' @return An updated version of `recipe` with the new step added to the
