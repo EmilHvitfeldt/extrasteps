@@ -118,8 +118,8 @@ unit_normalize_apply <- function(x, norm = c("l2", "l1", "max")) {
 #' @export
 print.step_unit_normalize <-
   function(x, width = max(20, options()$width - 31), ...) {
-    cat("Unit Normalization on ", sep = "")
-    printer(x$columns, x$terms, x$trained, width = width)
+    title <- "Unit Normalization on "
+    print_step(x$columns, x$terms, x$trained, width = width, title = title)
     invisible(x)
   }
 

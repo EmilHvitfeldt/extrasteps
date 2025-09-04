@@ -107,8 +107,8 @@ minmax_apply <- function(x, res) {
 #' @export
 print.step_minmax <-
   function(x, width = max(20, options()$width - 31), ...) {
-    cat("Min Max scaling on ", sep = "")
-    printer(x$columns, x$terms, x$trained, width = width)
+    title <- "Min Max scaling on "
+    print_step(x$columns, x$terms, x$trained, width = width, title = title)
     invisible(x)
   }
 
