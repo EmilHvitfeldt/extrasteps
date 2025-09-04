@@ -137,16 +137,17 @@
 #'
 #' bake(rec_spec_preped, new_data = NULL)
 step_date_before <-
-  function(recipe,
-           ...,
-           role = "predictor",
-           trained = FALSE,
-           rules = list(),
-           transform = "identity",
-           columns = NULL,
-           skip = FALSE,
-           id = rand_id("date_before")) {
-
+  function(
+    recipe,
+    ...,
+    role = "predictor",
+    trained = FALSE,
+    rules = list(),
+    transform = "identity",
+    columns = NULL,
+    skip = FALSE,
+    id = rand_id("date_before")
+  ) {
     add_step(
       recipe,
       step_date_before_new(
@@ -182,12 +183,14 @@ prep.step_date_before <- function(x, training, info = NULL, ...) {
   col_names <- recipes_eval_select(x$terms, training, info)
 
   date_data <- info[info$variable %in% col_names, ]
-  if (any(date_data$type != "date"))
+  if (any(date_data$type != "date")) {
     rlang::abort(
-      paste0("All variables for `step_date` should be either `Date` or",
-             "`POSIXct` classes."
+      paste0(
+        "All variables for `step_date` should be either `Date` or",
+        "`POSIXct` classes."
       )
     )
+  }
 
   if (is.null(names(x$rules)) || !is.list(x$rules)) {
     rlang::abort(
@@ -222,8 +225,13 @@ bake.step_date_before <- function(object, new_data, ...) {
 
   transform <- fetch_date_transforms(object$transform)
 
-  new_cols <- purrr::imap_dfc(object$columns, date_before_helper,
-                              new_data, object$rules, transform)
+  new_cols <- purrr::imap_dfc(
+    object$columns,
+    date_before_helper,
+    new_data,
+    object$rules,
+    transform
+  )
 
   new_cols <- check_name(new_cols, new_data, object, names(new_cols))
 
@@ -233,12 +241,14 @@ bake.step_date_before <- function(object, new_data, ...) {
 }
 
 date_before_helper <- function(columnn, name, new_data, rule, transform) {
-  res <- purrr::map_dfc(rule, ~ {
-    values <- new_data[[columnn]]
-    res <- alma_next(values, .x, inclusive = TRUE) - values
-    res <- as.integer(res)
-    res <- transform(res)
-    res
+  res <- purrr::map_dfc(
+    rule,
+    ~ {
+      values <- new_data[[columnn]]
+      res <- alma_next(values, .x, inclusive = TRUE) - values
+      res <- as.integer(res)
+      res <- transform(res)
+      res
     }
   )
 

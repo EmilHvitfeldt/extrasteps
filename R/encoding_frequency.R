@@ -30,16 +30,16 @@
 #'
 #' tidy(rec, 1)
 step_encoding_frequency <-
-  function(recipe,
-           ...,
-           role = NA,
-           trained = FALSE,
-           res = NULL,
-           columns = NULL,
-           skip = FALSE,
-           id = rand_id("encoding_frequency")
+  function(
+    recipe,
+    ...,
+    role = NA,
+    trained = FALSE,
+    res = NULL,
+    columns = NULL,
+    skip = FALSE,
+    id = rand_id("encoding_frequency")
   ) {
-
     add_step(
       recipe,
       step_encoding_frequency_new(

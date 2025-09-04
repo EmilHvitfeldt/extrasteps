@@ -36,16 +36,17 @@
 #'
 #' bake(rec_spec_preped, new_data = NULL)
 step_time_event <-
-  function(recipe,
-           ...,
-           role = "predictor",
-           trained = FALSE,
-           rules = list(),
-           columns = NULL,
-           keep_original_cols = FALSE,
-           skip = FALSE,
-           id = rand_id("time_event")) {
-
+  function(
+    recipe,
+    ...,
+    role = "predictor",
+    trained = FALSE,
+    rules = list(),
+    columns = NULL,
+    keep_original_cols = FALSE,
+    skip = FALSE,
+    id = rand_id("time_event")
+  ) {
     add_step(
       recipe,
       step_time_event_new(
@@ -74,19 +75,21 @@ step_time_event_new <-
       skip = skip,
       id = id
     )
-}
+  }
 
 #' @export
 prep.step_time_event <- function(x, training, info = NULL, ...) {
   col_names <- recipes_eval_select(x$terms, training, info)
 
   date_data <- info[info$variable %in% col_names, ]
-  if (any(date_data$type != "date"))
+  if (any(date_data$type != "date")) {
     rlang::abort(
-      paste0("All variables for `step_date` should be either `Date` or",
-             "`POSIXct` classes."
+      paste0(
+        "All variables for `step_date` should be either `Date` or",
+        "`POSIXct` classes."
       )
     )
+  }
 
   if (is.null(names(x$rules)) || !is.list(x$rules)) {
     rlang::abort(
@@ -137,7 +140,9 @@ bake.step_time_event <- function(object, new_data, ...) {
 }
 
 get_time_events <- function(rules, column, name, new_data) {
-  res <- lapply(X = rules, FUN = function(x) almanac::alma_in(new_data[[column]],x))
+  res <- lapply(X = rules, FUN = function(x) {
+    almanac::alma_in(new_data[[column]], x)
+  })
   res <- as_tibble(res)
   res
 }

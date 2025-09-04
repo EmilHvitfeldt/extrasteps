@@ -8,9 +8,7 @@ data(biomass)
 mins <- vapply(biomass[, 3:7], min, c(min = 0), na.rm = TRUE)
 maxs <- vapply(biomass[, 3:7], max, c(max = 0), na.rm = TRUE)
 
-rec <- recipe(~ carbon + hydrogen + oxygen + nitrogen + sulfur,
-              data = biomass
-)
+rec <- recipe(~ carbon + hydrogen + oxygen + nitrogen + sulfur, data = biomass)
 
 test_that("minmax works", {
   standardized <- rec %>%

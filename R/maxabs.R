@@ -27,16 +27,16 @@
 #'
 #' tidy(rec, 1)
 step_maxabs <-
-  function(recipe,
-           ...,
-           role = NA,
-           trained = FALSE,
-           res = NULL,
-           columns = NULL,
-           skip = FALSE,
-           id = rand_id("maxabs")
+  function(
+    recipe,
+    ...,
+    role = NA,
+    trained = FALSE,
+    res = NULL,
+    columns = NULL,
+    skip = FALSE,
+    id = rand_id("maxabs")
   ) {
-
     add_step(
       recipe,
       step_maxabs_new(

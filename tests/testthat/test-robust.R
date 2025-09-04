@@ -6,12 +6,22 @@ library(modeldata)
 data(biomass)
 
 lower <- vapply(biomass[, 3:7], quantile, c(min = 0), prob = 0.25, na.rm = TRUE)
-medians <- vapply(biomass[, 3:7], quantile, c(max = 0), prob = 0.5, na.rm = TRUE)
-higher <- vapply(biomass[, 3:7], quantile, c(min = 0), prob = 0.75, na.rm = TRUE)
-
-rec <- recipe(~ carbon + hydrogen + oxygen + nitrogen + sulfur,
-              data = biomass
+medians <- vapply(
+  biomass[, 3:7],
+  quantile,
+  c(max = 0),
+  prob = 0.5,
+  na.rm = TRUE
 )
+higher <- vapply(
+  biomass[, 3:7],
+  quantile,
+  c(min = 0),
+  prob = 0.75,
+  na.rm = TRUE
+)
+
+rec <- recipe(~ carbon + hydrogen + oxygen + nitrogen + sulfur, data = biomass)
 
 test_that("robust works", {
   standardized <- rec %>%
@@ -25,13 +35,30 @@ test_that("robust works", {
 })
 
 test_that("range argument works", {
-  lower01 <- vapply(biomass[, 3:7], quantile, c(min = 0), prob = 0.1, na.rm = TRUE)
-  higher09 <- vapply(biomass[, 3:7], quantile, c(min = 0), prob = 0.9, na.rm = TRUE)
-
+  lower01 <- vapply(
+    biomass[, 3:7],
+    quantile,
+    c(min = 0),
+    prob = 0.1,
+    na.rm = TRUE
+  )
+  higher09 <- vapply(
+    biomass[, 3:7],
+    quantile,
+    c(min = 0),
+    prob = 0.9,
+    na.rm = TRUE
+  )
 
   standardized <- rec %>%
-    step_robust(carbon, hydrogen, oxygen, nitrogen, sulfur,
-                range = c(0.1, 0.9)) %>%
+    step_robust(
+      carbon,
+      hydrogen,
+      oxygen,
+      nitrogen,
+      sulfur,
+      range = c(0.1, 0.9)
+    ) %>%
     prep() %>%
     bake(new_data = NULL)
 
@@ -61,7 +88,11 @@ test_that("correct min and max", {
     tibble(
       terms = rep(vrs, each = 3),
       statistic = rep(c("lower", "median", "higher"), times = 5),
-      value = as.numeric(matrix(c(lower, medians, higher), nrow = 3, byrow = TRUE)),
+      value = as.numeric(matrix(
+        c(lower, medians, higher),
+        nrow = 3,
+        byrow = TRUE
+      )),
       id = standardized$steps[[1]]$id
     )
 
