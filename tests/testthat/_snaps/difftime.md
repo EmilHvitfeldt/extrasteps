@@ -12,8 +12,7 @@
       predictor: 10
       
       -- Operations 
-    Output
-      transformation on 
+      * transformation on: <none>
 
 ---
 
@@ -32,8 +31,7 @@
       Training data contained 32 data points and no incomplete rows.
       
       -- Operations 
-    Output
-      transformation on  [trained]
+      * transformation on: <none> | Trained
 
 # printing
 
@@ -48,8 +46,7 @@
       predictor: 1
       
       -- Operations 
-    Output
-      transformation on dates
+      * transformation on: dates
 
 ---
 
@@ -67,6 +64,5 @@
       Training data contained 25 data points and no incomplete rows.
       
       -- Operations 
-    Output
-      transformation on dates [trained]
+      * transformation on: dates | Trained
 

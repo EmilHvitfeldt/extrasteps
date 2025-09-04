@@ -143,8 +143,8 @@ bake.step_difftime <- function(object, new_data, ...) {
 print.step_difftime <-
   function(x, width = max(20, options()$width - 31), ...) {
     msg <- ifelse(x$signed, "Signed difftime ", "difftime ")
-    cat(msg, "transformation on ", sep = "")
-    printer(x$columns, x$terms, x$trained, width = width)
+    title <- paste(msg, "transformation on ", sep = "")
+    print_step(x$columns, x$terms, x$trained, width = width, title = title)
     invisible(x)
   }
 

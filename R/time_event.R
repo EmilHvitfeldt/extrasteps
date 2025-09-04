@@ -145,8 +145,8 @@ get_time_events <- function(rules, column, name, new_data) {
 #' @export
 print.step_time_event <-
   function(x, width = max(20, options()$width - 35), ...) {
-    cat("Time events from ")
-    printer(x$columns, x$terms, x$trained, width = width)
+    title <- "Time events from "
+    print_step(x$columns, x$terms, x$trained, width = width, title = title)
     invisible(x)
   }
 
