@@ -7,9 +7,7 @@ data(biomass)
 
 maxs <- abs(vapply(biomass[, 3:7], max, c(max = 0), na.rm = TRUE))
 
-rec <- recipe(~ carbon + hydrogen + oxygen + nitrogen + sulfur,
-              data = biomass
-)
+rec <- recipe(~ carbon + hydrogen + oxygen + nitrogen + sulfur, data = biomass)
 
 test_that("maxabs works", {
   standardized <- rec %>%

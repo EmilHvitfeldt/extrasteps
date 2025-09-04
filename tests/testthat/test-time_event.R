@@ -13,7 +13,7 @@ test_that("time_event works", {
   on_weekdays <- weekly() %>% recur_on_weekdays()
 
   rules <- list(weekend = on_weekends, weekday = on_weekdays)
-  rec_spec <- recipe(~ date1, data = examples) %>%
+  rec_spec <- recipe(~date1, data = examples) %>%
     step_time_event(date1, rules = rules) %>%
     prep()
 
@@ -42,8 +42,10 @@ test_that("time_event works with multiple columns", {
 
   res <- bake(rec_spec, new_data = NULL)
 
-  expect_equal(names(res), c("date1_weekend", "date1_weekday",
-                             "date2_weekend", "date2_weekday"))
+  expect_equal(
+    names(res),
+    c("date1_weekend", "date1_weekday", "date2_weekend", "date2_weekday")
+  )
 
   expect_equal(
     vctrs::vec_cast(alma_in(examples$date1, on_weekdays), integer()),
@@ -71,33 +73,34 @@ test_that("time_event errors", {
 
   expect_snapshot(
     error = TRUE,
-    recipe(~ ., data = examples) %>%
+    recipe(~., data = examples) %>%
       step_time_event(numeric, rules = rules) %>%
       prep()
   )
 
   expect_snapshot(
     error = TRUE,
-    recipe(~ ., data = examples) %>%
+    recipe(~., data = examples) %>%
       step_time_event(date1, rules = "wrong") %>%
       prep()
   )
 
   expect_snapshot(
     error = TRUE,
-    recipe(~ ., data = examples) %>%
+    recipe(~., data = examples) %>%
       step_time_event(date1, rules = list(weekend = on_weekends, "Hello")) %>%
       prep()
   )
 
   expect_snapshot(
     error = TRUE,
-    recipe(~ ., data = examples) %>%
-      step_time_event(date1, rules = list(weekend = on_weekends,
-                                          christmas = "2020-12-25")) %>%
+    recipe(~., data = examples) %>%
+      step_time_event(
+        date1,
+        rules = list(weekend = on_weekends, christmas = "2020-12-25")
+      ) %>%
       prep()
   )
-
 })
 
 test_that("check_name() is used", {
@@ -177,7 +180,7 @@ test_that("printing", {
   on_weekdays <- weekly() %>% recur_on_weekdays()
 
   rules <- list(weekend = on_weekends, weekday = on_weekdays)
-  rec <- recipe(~ date1, data = examples) %>%
+  rec <- recipe(~date1, data = examples) %>%
     step_time_event(date1, rules = rules)
 
   expect_snapshot(print(rec))

@@ -27,16 +27,16 @@
 #'
 #' tidy(rec, 1)
 step_unit_normalize <-
-  function(recipe,
-           ...,
-           role = NA,
-           trained = FALSE,
-           norm = c("l2", "l1", "max"),
-           columns = NULL,
-           skip = FALSE,
-           id = rand_id("unit_normalize")
+  function(
+    recipe,
+    ...,
+    role = NA,
+    trained = FALSE,
+    norm = c("l2", "l1", "max"),
+    columns = NULL,
+    skip = FALSE,
+    id = rand_id("unit_normalize")
   ) {
-
     add_step(
       recipe,
       step_unit_normalize_new(
@@ -103,7 +103,7 @@ unit_normalize_apply <- function(x, norm = c("l2", "l1", "max")) {
   norm <- match.arg(norm)
 
   if (norm == "l2") {
-    res <- x / sqrt(rowSums(x ^ 2))
+    res <- x / sqrt(rowSums(x^2))
   }
   if (norm == "l1") {
     res <- x / rowSums(abs(x))

@@ -20,7 +20,7 @@ test_that("time_event works", {
   on_weekdays <- weekly() %>% recur_on_weekdays()
 
   rules <- list(weekend = on_weekends, weekday = on_weekdays)
-  rec_spec <- recipe(~ date1, data = examples) %>%
+  rec_spec <- recipe(~date1, data = examples) %>%
     step_date_nearest(date1, rules = rules) %>%
     prep()
 
@@ -49,8 +49,15 @@ test_that("time_event works with multiple columns", {
 
   res <- bake(rec_spec, new_data = NULL)
 
-  expect_equal(names(res), c("date1_nearest_weekend", "date1_nearest_weekday",
-                             "date2_nearest_weekend", "date2_nearest_weekday"))
+  expect_equal(
+    names(res),
+    c(
+      "date1_nearest_weekend",
+      "date1_nearest_weekday",
+      "date2_nearest_weekend",
+      "date2_nearest_weekday"
+    )
+  )
 
   expect_equal(
     nearest_fun(examples$date1, on_weekdays),
@@ -77,7 +84,7 @@ test_that("time_event works with transform", {
   rules <- list(weekend = on_weekends)
 
   # Inverse
-  rec_spec <- recipe(~ date1, data = examples) %>%
+  rec_spec <- recipe(~date1, data = examples) %>%
     step_date_nearest(date1, rules = rules, transform = "inverse") %>%
     prep()
 
@@ -89,7 +96,7 @@ test_that("time_event works with transform", {
   )
 
   # exp
-  rec_spec <- recipe(~ date1, data = examples) %>%
+  rec_spec <- recipe(~date1, data = examples) %>%
     step_date_nearest(date1, rules = rules, transform = "exp") %>%
     prep()
 
@@ -101,7 +108,7 @@ test_that("time_event works with transform", {
   )
 
   # log
-  rec_spec <- recipe(~ date1, data = examples) %>%
+  rec_spec <- recipe(~date1, data = examples) %>%
     step_date_nearest(date1, rules = rules, transform = "log") %>%
     prep()
 
@@ -115,7 +122,7 @@ test_that("time_event works with transform", {
   # custom
   custom_fun <- function(x) x / 2
 
-  rec_spec <- recipe(~ date1, data = examples) %>%
+  rec_spec <- recipe(~date1, data = examples) %>%
     step_date_nearest(date1, rules = rules, transform = custom_fun) %>%
     prep()
 
@@ -135,33 +142,34 @@ test_that("time_event errors", {
 
   expect_snapshot(
     error = TRUE,
-    recipe(~ ., data = examples) %>%
+    recipe(~., data = examples) %>%
       step_date_nearest(numeric, rules = rules) %>%
       prep()
   )
 
   expect_snapshot(
     error = TRUE,
-    recipe(~ ., data = examples) %>%
+    recipe(~., data = examples) %>%
       step_date_nearest(date1, rules = "wrong") %>%
       prep()
   )
 
   expect_snapshot(
     error = TRUE,
-    recipe(~ ., data = examples) %>%
+    recipe(~., data = examples) %>%
       step_date_nearest(date1, rules = list(weekend = on_weekends, "Hello")) %>%
       prep()
   )
 
   expect_snapshot(
     error = TRUE,
-    recipe(~ ., data = examples) %>%
-      step_date_nearest(date1, rules = list(weekend = on_weekends,
-                                          christmas = "2020-12-25")) %>%
+    recipe(~., data = examples) %>%
+      step_date_nearest(
+        date1,
+        rules = list(weekend = on_weekends, christmas = "2020-12-25")
+      ) %>%
       prep()
   )
-
 })
 
 test_that("check_name() is used", {
@@ -241,7 +249,7 @@ test_that("printing", {
   on_weekdays <- weekly() %>% recur_on_weekdays()
 
   rules <- list(weekend = on_weekends, weekday = on_weekdays)
-  rec <- recipe(~ date1, data = examples) %>%
+  rec <- recipe(~date1, data = examples) %>%
     step_date_nearest(date1, rules = rules)
 
   expect_snapshot(print(rec))
