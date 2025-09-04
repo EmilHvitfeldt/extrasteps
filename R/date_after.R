@@ -4,6 +4,7 @@
 #' create new columns indicating the time after an recurrent event.
 #'
 #' @inheritParams recipes::step_center
+#' @inheritParams step_time_event
 #' @param rules Named list of `almanac` rules.
 #' @param transform A function or character indication a function used oon the
 #'  resulting variables. See details for allowed names and their functions.
@@ -145,6 +146,7 @@ step_date_after <-
     rules = list(),
     transform = "identity",
     columns = NULL,
+    keep_original_cols = FALSE,
     skip = FALSE,
     id = rand_id("date_after")
   ) {
@@ -157,6 +159,7 @@ step_date_after <-
         rules = rules,
         transform = transform,
         columns = columns,
+        keep_original_cols = keep_original_cols,
         skip = skip,
         id = id
       )
@@ -164,7 +167,17 @@ step_date_after <-
   }
 
 step_date_after_new <-
-  function(terms, role, trained, rules, transform, columns, skip, id) {
+  function(
+    terms,
+    role,
+    trained,
+    rules,
+    transform,
+    columns,
+    keep_original_cols,
+    skip,
+    id
+  ) {
     step(
       subclass = "date_after",
       terms = terms,
@@ -173,6 +186,7 @@ step_date_after_new <-
       rules = rules,
       transform = transform,
       columns = columns,
+      keep_original_cols = keep_original_cols,
       skip = skip,
       id = id
     )
@@ -211,6 +225,7 @@ prep.step_date_after <- function(x, training, info = NULL, ...) {
     rules = x$rules,
     transform = x$transform,
     columns = col_names,
+    keep_original_cols = get_keep_original_cols(x),
     skip = x$skip,
     id = x$id
   )
@@ -218,7 +233,10 @@ prep.step_date_after <- function(x, training, info = NULL, ...) {
 
 #' @export
 bake.step_date_after <- function(object, new_data, ...) {
-  if (length(object$column) == 0L) {
+  col_names <- names(object$columns)
+  check_new_data(col_names, object, new_data)
+
+  if (length(col_names) == 0L) {
     # Empty selection
     return(new_data)
   }
@@ -236,7 +254,7 @@ bake.step_date_after <- function(object, new_data, ...) {
   new_cols <- check_name(new_cols, new_data, object, names(new_cols))
 
   new_data <- dplyr::bind_cols(new_data, new_cols)
-  new_data <- dplyr::select(new_data, -names(object$columns))
+  new_data <- remove_original_cols(new_data, object, col_names)
   new_data
 }
 

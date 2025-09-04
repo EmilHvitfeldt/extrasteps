@@ -6,9 +6,11 @@
 #' @inheritParams recipes::step_center
 #' @inheritParams recipes::step_date
 #' @param rules Named list of `almanac` rules.
-#' @param columns A character string of variables that will be
-#'  used as inputs. This field is a placeholder and will be
-#'  populated once [recipes::prep.recipe()] is used.
+#' @param columns A character string of variables that will be used as inputs.
+#'   This field is a placeholder and will be populated once
+#'   [recipes::prep.recipe()] is used.
+#' @param keep_original_cols A logical to keep the original variables in the
+#'   output. Defaults to `FALSE`.
 #' @return An updated version of `recipe` with the new check added to the
 #'  sequence of any existing operations.
 #' @export
