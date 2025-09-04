@@ -12,8 +12,7 @@
       predictor: 10
       
       -- Operations 
-    Output
-      Robust scaling on 
+      * Robust scaling on: <none>
 
 ---
 
@@ -32,8 +31,7 @@
       Training data contained 32 data points and no incomplete rows.
       
       -- Operations 
-    Output
-      Robust scaling on  [trained]
+      * Robust scaling on: <none> | Trained
 
 # printing
 
@@ -48,8 +46,7 @@
       predictor: 11
       
       -- Operations 
-    Output
-      Robust scaling on all_predictors()
+      * Robust scaling on: all_predictors()
 
 ---
 
@@ -67,6 +64,5 @@
       Training data contained 32 data points and no incomplete rows.
       
       -- Operations 
-    Output
-      Robust scaling on mpg, cyl, disp, hp, drat, wt, qsec, vs, am, ge... [trained]
+      * Robust scaling on: mpg, cyl, disp, hp, drat, wt, qsec, vs, ... | Trained
 

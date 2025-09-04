@@ -140,8 +140,8 @@ encoding_binary_apply <- function(x, lvls) {
 #' @export
 print.step_encoding_binary <-
   function(x, width = max(20, options()$width - 31), ...) {
-    cat("Binary Encoding on ", sep = "")
-    printer(x$columns, x$terms, x$trained, width = width)
+    title <- "Binary Encoding on "
+    print_step(x$columns, x$terms, x$trained, width = width, title = title)
     invisible(x)
   }
 

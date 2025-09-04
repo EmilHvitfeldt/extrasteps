@@ -62,8 +62,7 @@
       predictor: 10
       
       -- Operations 
-    Output
-      Time events from 
+      * Time events from: <none>
 
 ---
 
@@ -82,8 +81,7 @@
       Training data contained 32 data points and no incomplete rows.
       
       -- Operations 
-    Output
-      Time events from  [trained]
+      * Time events from: <none> | Trained
 
 # printing
 
@@ -98,8 +96,7 @@
       predictor: 1
       
       -- Operations 
-    Output
-      Time events from date1
+      * Time events from: date1
 
 ---
 
@@ -117,6 +114,5 @@
       Training data contained 20 data points and no incomplete rows.
       
       -- Operations 
-    Output
-      Time events from date1 [trained]
+      * Time events from: date1 | Trained
 

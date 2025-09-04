@@ -252,8 +252,8 @@ date_nearest_helper <- function(columnn, name, new_data, rule, transform) {
 #' @export
 print.step_date_nearest <-
   function(x, width = max(20, options()$width - 35), ...) {
-    cat("Time events from ")
-    printer(x$columns, x$terms, x$trained, width = width)
+    title <- "Time events from "
+    print_step(x$columns, x$terms, x$trained, width = width, title = title)
     invisible(x)
   }
 

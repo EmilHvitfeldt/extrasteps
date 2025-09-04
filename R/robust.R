@@ -135,8 +135,8 @@ robust_apply <- function(x, res) {
 #' @export
 print.step_robust <-
   function(x, width = max(20, options()$width - 31), ...) {
-    cat("Robust scaling on ", sep = "")
-    printer(x$columns, x$terms, x$trained, width = width)
+    title <- "Robust scaling on "
+    print_step(x$columns, x$terms, x$trained, width = width, title = title)
     invisible(x)
   }
 
