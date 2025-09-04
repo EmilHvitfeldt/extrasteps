@@ -5,7 +5,9 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/EmilHvitfeldt/extrasteps/workflows/R-CMD-check/badge.svg)](https://github.com/EmilHvitfeldt/extrasteps/actions)
+[![R-CMD-check](https://github.com/EmilHvitfeldt/extrasteps/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/EmilHvitfeldt/extrasteps/actions/workflows/R-CMD-check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/EmilHvitfeldt/extrasteps/graph/badge.svg)](https://app.codecov.io/gh/EmilHvitfeldt/extrasteps)
 <!-- badges: end -->
 
 The goal of extrasteps is to provide additional steps for
