@@ -27,16 +27,16 @@
 #'
 #' tidy(rec, 1)
 step_minmax <-
-  function(recipe,
-           ...,
-           role = NA,
-           trained = FALSE,
-           res = NULL,
-           columns = NULL,
-           skip = FALSE,
-           id = rand_id("minmax")
+  function(
+    recipe,
+    ...,
+    role = NA,
+    trained = FALSE,
+    res = NULL,
+    columns = NULL,
+    skip = FALSE,
+    id = rand_id("minmax")
   ) {
-
     add_step(
       recipe,
       step_minmax_new(

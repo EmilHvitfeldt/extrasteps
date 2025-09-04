@@ -51,16 +51,17 @@
 #'   prep() %>%
 #'   bake(new_data = NULL)
 step_difftime <-
-  function(recipe,
-           ...,
-           role = NA,
-           trained = FALSE,
-           time = NULL,
-           tz = NULL,
-           unit = "auto",
-           columns = NULL,
-           skip = FALSE,
-           id = rand_id("difftime")
+  function(
+    recipe,
+    ...,
+    role = NA,
+    trained = FALSE,
+    time = NULL,
+    tz = NULL,
+    unit = "auto",
+    columns = NULL,
+    skip = FALSE,
+    id = rand_id("difftime")
   ) {
     add_step(
       recipe,
@@ -103,12 +104,14 @@ prep.step_difftime <- function(x, training, info = NULL, ...) {
   }
 
   date_data <- info[info$variable %in% col_names, ]
-  if (any(purrr::map_lgl(date_data$type, ~!.x %in% c("date", "datetime"))))
+  if (any(purrr::map_lgl(date_data$type, ~ !.x %in% c("date", "datetime")))) {
     rlang::abort(
-      paste0("All variables for `step_date` should be either `Date` or",
-             "`POSIXct` classes."
+      paste0(
+        "All variables for `step_date` should be either `Date` or",
+        "`POSIXct` classes."
       )
     )
+  }
   step_difftime_new(
     terms = x$terms,
     role = x$role,
@@ -128,13 +131,10 @@ bake.step_difftime <- function(object, new_data, ...) {
   # for backward compat
 
   for (i in seq_along(col_names)) {
-      new_data[[col_names[i]]] <-
-        as.numeric(
-          difftime(new_data[[col_names[i]]],
-                   object$time,
-                   object$tz,
-                   object$unit)
-        )
+    new_data[[col_names[i]]] <-
+      as.numeric(
+        difftime(new_data[[col_names[i]]], object$time, object$tz, object$unit)
+      )
   }
   new_data
 }

@@ -6,33 +6,49 @@ library(modeldata)
 data(biomass)
 
 biomass_l1 <- biomass[, 3:7] / rowSums(abs(biomass[, 3:7]))
-biomass_l2 <- biomass[, 3:7] / sqrt(rowSums(biomass[, 3:7] ^ 2))
+biomass_l2 <- biomass[, 3:7] / sqrt(rowSums(biomass[, 3:7]^2))
 biomass_max <- biomass[, 3:7] / apply(abs(biomass[, 3:7]), 1, max)
 
-rec <- recipe(~ carbon + hydrogen + oxygen + nitrogen + sulfur,
-              data = biomass
-)
+rec <- recipe(~ carbon + hydrogen + oxygen + nitrogen + sulfur, data = biomass)
 
 test_that("robust works", {
   standardized_l1 <- rec %>%
-    step_unit_normalize(carbon, hydrogen, oxygen, nitrogen, sulfur,
-                        norm = "l1") %>%
+    step_unit_normalize(
+      carbon,
+      hydrogen,
+      oxygen,
+      nitrogen,
+      sulfur,
+      norm = "l1"
+    ) %>%
     prep() %>%
     bake(new_data = NULL)
 
   expect_equal(standardized_l1, as_tibble(biomass_l1))
 
   standardized_l2 <- rec %>%
-    step_unit_normalize(carbon, hydrogen, oxygen, nitrogen, sulfur,
-                        norm = "l2") %>%
+    step_unit_normalize(
+      carbon,
+      hydrogen,
+      oxygen,
+      nitrogen,
+      sulfur,
+      norm = "l2"
+    ) %>%
     prep() %>%
     bake(new_data = NULL)
 
   expect_equal(standardized_l2, as_tibble(biomass_l2))
 
   standardized_max <- rec %>%
-    step_unit_normalize(carbon, hydrogen, oxygen, nitrogen, sulfur,
-                        norm = "max") %>%
+    step_unit_normalize(
+      carbon,
+      hydrogen,
+      oxygen,
+      nitrogen,
+      sulfur,
+      norm = "max"
+    ) %>%
     prep() %>%
     bake(new_data = NULL)
 

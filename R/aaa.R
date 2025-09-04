@@ -15,8 +15,10 @@ fetch_date_transforms <- function(x) {
   }
   if (!x %in% names(date_transforms)) {
     rlang::abort(
-      paste("`transform` must be a function or one of built-in names.",
-            "See `?step_date_nearest` for valid input.")
+      paste(
+        "`transform` must be a function or one of built-in names.",
+        "See `?step_date_nearest` for valid input."
+      )
     )
   }
   date_transforms[[x]]

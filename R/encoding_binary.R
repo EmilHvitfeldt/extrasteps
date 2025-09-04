@@ -31,17 +31,17 @@
 #'
 #' tidy(rec, 1)
 step_encoding_binary <-
-  function(recipe,
-           ...,
-           role = NA,
-           trained = FALSE,
-           res = NULL,
-           columns = NULL,
-           keep_original_cols = FALSE,
-           skip = FALSE,
-           id = rand_id("encoding_binary")
+  function(
+    recipe,
+    ...,
+    role = NA,
+    trained = FALSE,
+    res = NULL,
+    columns = NULL,
+    keep_original_cols = FALSE,
+    skip = FALSE,
+    id = rand_id("encoding_binary")
   ) {
-
     add_step(
       recipe,
       step_encoding_binary_new(
@@ -129,10 +129,12 @@ encoding_binary_apply <- function(x, lvls) {
     rlang::abort("levels doesn't match")
   }
 
-  res <- t(sapply(as.integer(x), function(x){as.integer(intToBits(x))}))
+  res <- t(sapply(as.integer(x), function(x) {
+    as.integer(intToBits(x))
+  }))
   res <- res[, seq_len(n_cols)]
 
-  colnames(res) <- 2 ^ (seq_len(n_cols) - 1)
+  colnames(res) <- 2^(seq_len(n_cols) - 1)
 
   dplyr::as_tibble(res)
 }
