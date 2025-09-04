@@ -31,12 +31,12 @@ been estimated.}
 
 \item{rules}{Named list of \code{almanac} rules.}
 
-\item{columns}{A character string of variables that will be
-used as inputs. This field is a placeholder and will be
-populated once \code{\link[recipes:prep]{recipes::prep.recipe()}} is used.}
+\item{columns}{A character string of variables that will be used as inputs.
+This field is a placeholder and will be populated once
+\code{\link[recipes:prep]{recipes::prep.recipe()}} is used.}
 
 \item{keep_original_cols}{A logical to keep the original variables in the
-output. Defaults to \code{TRUE}.}
+output. Defaults to \code{FALSE}.}
 
 \item{skip}{A logical. Should the step be skipped when the recipe is baked by
 \code{\link[recipes:bake]{bake()}}? While all operations are baked when \code{\link[recipes:prep]{prep()}} is run, some
