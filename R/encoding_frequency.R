@@ -118,8 +118,8 @@ encoding_frequency_apply <- function(x, freqs) {
 #' @export
 print.step_encoding_frequency <-
   function(x, width = max(20, options()$width - 31), ...) {
-    cat("Frequency encoding on ", sep = "")
-    printer(x$columns, x$terms, x$trained, width = width)
+    title <- "Frequency encoding on "
+    print_step(x$columns, x$terms, x$trained, width = width, title = title)
     invisible(x)
   }
 

@@ -12,8 +12,7 @@
       predictor: 10
       
       -- Operations 
-    Output
-      Min Max scaling on 
+      * Min Max scaling on: <none>
 
 ---
 
@@ -32,8 +31,7 @@
       Training data contained 32 data points and no incomplete rows.
       
       -- Operations 
-    Output
-      Min Max scaling on  [trained]
+      * Min Max scaling on: <none> | Trained
 
 # printing
 
@@ -48,8 +46,7 @@
       predictor: 11
       
       -- Operations 
-    Output
-      Min Max scaling on all_predictors()
+      * Min Max scaling on: all_predictors()
 
 ---
 
@@ -67,6 +64,5 @@
       Training data contained 32 data points and no incomplete rows.
       
       -- Operations 
-    Output
-      Min Max scaling on mpg, cyl, disp, hp, drat, wt, qsec, vs, am, ge... [trained]
+      * Min Max scaling on: mpg, cyl, disp, hp, drat, wt, qsec, vs, ... | Trained
 

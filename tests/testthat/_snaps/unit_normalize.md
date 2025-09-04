@@ -12,8 +12,7 @@
       predictor: 10
       
       -- Operations 
-    Output
-      Unit Normalization on 
+      * Unit Normalization on: <none>
 
 ---
 
@@ -32,8 +31,7 @@
       Training data contained 32 data points and no incomplete rows.
       
       -- Operations 
-    Output
-      Unit Normalization on  [trained]
+      * Unit Normalization on: <none> | Trained
 
 # printing
 
@@ -48,8 +46,7 @@
       predictor: 11
       
       -- Operations 
-    Output
-      Unit Normalization on all_predictors()
+      * Unit Normalization on: all_predictors()
 
 ---
 
@@ -67,6 +64,5 @@
       Training data contained 32 data points and no incomplete rows.
       
       -- Operations 
-    Output
-      Unit Normalization on mpg, cyl, disp, hp, drat, wt, qsec, vs, am, ge... [trained]
+      * Unit Normalization on: mpg, cyl, disp, hp, drat, wt, qsec, ... | Trained
 
