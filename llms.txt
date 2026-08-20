@@ -1,0 +1,74 @@
+# extrasteps
+
+The goal of extrasteps is to provide additional steps for
+[recipes](https://github.com/tidymodels/recipes). These steps are
+located in this package because they don’t fit well in
+[recipes](https://recipes.tidymodels.org/) or [any of
+the](https://textrecipes.tidymodels.org/)
+[extension](https://embed.tidymodels.org/)
+[packages](https://themis.tidymodels.org/).
+
+> \[!IMPORTANT\]  
+> These steps work, but they are not tested as rigorously as the steps
+> in tidymodels packages. Hence why they are in this package. Also note
+> that steps can graduate from {extrasteps} to {recipes}, if they prove
+> their worth.
+
+## Installation
+
+You can install the released version of extrasteps from
+[CRAN](https://CRAN.R-project.org) with:
+
+``` r
+
+install.packages("extrasteps")
+```
+
+And the development version from [GitHub](https://github.com/) with:
+
+``` r
+
+# install.packages("devtools")
+devtools::install_github("EmilHvitfeldt/extrasteps")
+```
+
+## Code of Conduct
+
+Please note that the extrasteps project is released with a [Contributor
+Code of
+Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.
+
+# Package index
+
+## Datetime Steps
+
+- [`step_time_event()`](https://emilhvitfeldt.github.io/extrasteps/reference/step_time_event.md)
+  : Indicate Recurrent Date Time Event
+- [`step_difftime()`](https://emilhvitfeldt.github.io/extrasteps/reference/step_difftime.md)
+  : difftimearithmic Transformation
+- [`step_date_after()`](https://emilhvitfeldt.github.io/extrasteps/reference/step_date_after.md)
+  : Time after Recurrent Date Time Event
+- [`step_date_before()`](https://emilhvitfeldt.github.io/extrasteps/reference/step_date_before.md)
+  : Time before Recurrent Date Time Event
+- [`step_date_nearest()`](https://emilhvitfeldt.github.io/extrasteps/reference/step_date_nearest.md)
+  : Time to Nearest Recurrent Date Time Event
+
+## Normalization
+
+- [`step_maxabs()`](https://emilhvitfeldt.github.io/extrasteps/reference/step_maxabs.md)
+  : Perform Max Abs Scaling
+- [`step_minmax()`](https://emilhvitfeldt.github.io/extrasteps/reference/step_minmax.md)
+  : Perform Min Max Scaling
+- [`step_robust()`](https://emilhvitfeldt.github.io/extrasteps/reference/step_robust.md)
+  : Perform Robust Scaling
+- [`step_unit_normalize()`](https://emilhvitfeldt.github.io/extrasteps/reference/step_unit_normalize.md)
+  : Perform Unit Normalization
+
+## Categorical Encoding
+
+- [`step_encoding_binary()`](https://emilhvitfeldt.github.io/extrasteps/reference/step_encoding_binary.md)
+  : Perform binary encoding of factor variables
+- [`step_encoding_frequency()`](https://emilhvitfeldt.github.io/extrasteps/reference/step_encoding_frequency.md)
+  : Perform frequency encoding
+
