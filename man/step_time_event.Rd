@@ -60,6 +60,7 @@ original date variables by default. Set \code{keep_original_cols} to \code{FALSE
 remove them.
 }
 \examples{
+\dontshow{if (rlang::is_installed("almanac")) withAutoprint(\{ # examplesIf}
 library(recipes)
 library(extrasteps)
 library(almanac)
@@ -78,4 +79,5 @@ rec_spec <- recipe(ridership ~ date, data = Chicago) \%>\%
 rec_spec_preped <- prep(rec_spec)
 
 bake(rec_spec_preped, new_data = NULL)
+\dontshow{\}) # examplesIf}
 }
