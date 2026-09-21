@@ -51,14 +51,21 @@ jobs:
           http-user-agent: ${{ matrix.config.http-user-agent }}
           use-public-rspm: true
 
-      # Apple's Xcode clang ships without libomp, so CRAN binaries built with
-      # OpenMP (e.g. gower, a recipes dependency) fail to dyn.load without it.
-      # See https://mac.r-project.org/openmp/
+      # CRAN's macOS binary for gower (a recipes dependency) references
+      # OpenMP's ___kmpc_barrier via flat-namespace lookup without declaring
+      # a load-time dependency on libomp, so it only resolves if libomp is
+      # already loaded into the process. R's signed binary strips
+      # DYLD_INSERT_LIBRARIES, so libomp has to be dyn.load()-ed from R
+      # itself (with local = FALSE, to expose its symbols globally) before
+      # gower is loaded; R_PROFILE runs that for every R process R CMD
+      # check spawns. See https://mac.r-project.org/openmp/
       - name: Install OpenMP runtime (macOS)
         if: runner.os == 'macOS'
         run: |
           curl -LO https://mac.r-project.org/openmp/openmp-19.1.5-darwin20-Release.tar.gz
           sudo tar fvxz openmp-19.1.5-darwin20-Release.tar.gz -C /
+          echo 'dyn.load("/usr/local/lib/libomp.dylib", local = FALSE)' > "$RUNNER_TEMP/preload-omp.R"
+          echo "R_PROFILE=$RUNNER_TEMP/preload-omp.R" >> "$GITHUB_ENV"
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
