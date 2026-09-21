@@ -1,5 +1,6 @@
 library(testthat)
 library(recipes)
+skip_if_not_installed("almanac")
 library(almanac)
 
 examples <- tibble(
