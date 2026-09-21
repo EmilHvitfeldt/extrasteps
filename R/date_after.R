@@ -118,7 +118,7 @@
 #' {variable name}_after_{name of rule}
 #' ```
 #'
-#' @examples
+#' @examplesIf rlang::is_installed("almanac")
 #' library(recipes)
 #' library(extrasteps)
 #' library(almanac)
