@@ -87,6 +87,7 @@ The naming of the resulting variables will be on the form
 }\if{html}{\out{</div>}}
 }
 \examples{
+\dontshow{if (rlang::is_installed("almanac")) withAutoprint(\{ # examplesIf}
 library(recipes)
 library(extrasteps)
 library(almanac)
@@ -105,4 +106,5 @@ rec_spec <- recipe(ridership ~ date, data = Chicago) \%>\%
 rec_spec_preped <- prep(rec_spec)
 
 bake(rec_spec_preped, new_data = NULL)
+\dontshow{\}) # examplesIf}
 }

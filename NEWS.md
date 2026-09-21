@@ -1,5 +1,7 @@
 # extrasteps (development version)
 
+* Examples and tests that rely on the suggested `almanac` package are now conditioned on it being installed, so the package no longer fails checks (and risks CRAN removal) if `almanac` is temporarily unavailable.
+
 # extrasteps 0.3.0
 
 # extrasteps 0.2.0
