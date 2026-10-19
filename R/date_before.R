@@ -39,7 +39,7 @@
 #' The effect of `transform` is illustrated below.
 #'
 #'
-#' ```{r date_before, echo=FALSE, message=FALSE}
+#' ```{r date_before, echo=FALSE, message=FALSE, eval = rlang::is_installed(c("almanac", "ggplot2", "dplyr"))}
 #' library(almanac)
 #' library(ggplot2)
 #' library(dplyr)
@@ -150,6 +150,8 @@ step_date_before <-
     skip = FALSE,
     id = rand_id("date_before")
   ) {
+    recipes::recipes_pkg_check(required_pkgs.step_date_before())
+
     add_step(
       recipe,
       step_date_before_new(

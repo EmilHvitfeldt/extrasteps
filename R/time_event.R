@@ -49,6 +49,8 @@ step_time_event <-
     skip = FALSE,
     id = rand_id("time_event")
   ) {
+    recipes::recipes_pkg_check(required_pkgs.step_time_event())
+
     add_step(
       recipe,
       step_time_event_new(

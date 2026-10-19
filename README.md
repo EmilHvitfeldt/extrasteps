@@ -18,7 +18,7 @@ the](https://textrecipes.tidymodels.org/)
 [extension](https://embed.tidymodels.org/)
 [packages](https://themis.tidymodels.org/).
 
-> \[!IMPORTANT\]  
+> \[!IMPORTANT\]\
 > These steps work, but they are not tested as rigorously as the steps
 > in tidymodels packages. Hence why they are in this package. Also note
 > that steps can graduate from {extrasteps} to {recipes}, if they prove
