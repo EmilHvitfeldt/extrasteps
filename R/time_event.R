@@ -18,7 +18,7 @@
 #' original date variables by default. Set `keep_original_cols` to `FALSE` to
 #' remove them.
 #'
-#' @examplesIf rlang::is_installed("almanac")
+#' @examplesIf rlang::is_installed(c("almanac", "modeldata"))
 #' library(recipes)
 #' library(extrasteps)
 #' library(almanac)

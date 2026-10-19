@@ -33,7 +33,7 @@ been estimated.}
 
 \item{columns}{A character string of variables that will be used as inputs.
 This field is a placeholder and will be populated once
-\code{\link[recipes:prep]{recipes::prep.recipe()}} is used.}
+\code{\link[recipes:prep.recipe]{recipes::prep.recipe()}} is used.}
 
 \item{keep_original_cols}{A logical to keep the original variables in the
 output. Defaults to \code{FALSE}.}
@@ -60,7 +60,7 @@ original date variables by default. Set \code{keep_original_cols} to \code{FALSE
 remove them.
 }
 \examples{
-\dontshow{if (rlang::is_installed("almanac")) withAutoprint(\{ # examplesIf}
+\dontshow{if (rlang::is_installed(c("almanac", "modeldata"))) withAutoprint(\{ # examplesIf}
 library(recipes)
 library(extrasteps)
 library(almanac)

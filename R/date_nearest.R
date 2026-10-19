@@ -118,7 +118,7 @@
 #' {variable name}_nearest_{name of rule}
 #' ```
 #'
-#' @examplesIf rlang::is_installed("almanac")
+#' @examplesIf rlang::is_installed(c("almanac", "modeldata"))
 #' library(recipes)
 #' library(extrasteps)
 #' library(almanac)
