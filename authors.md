@@ -8,16 +8,16 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/EmilHvitfeldt/extrasteps/blob/main/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/EmilHvitfeldt/extrasteps/blob/v0.3.1/DESCRIPTION)
 
 Hvitfeldt E (2026). *extrasteps: More Miscellaneous Steps for the
-'recipes' Package*. R package version 0.3.0.9000,
+'recipes' Package*. R package version 0.3.1,
 <https://github.com/EmilHvitfeldt/extrasteps>.
 
     @Manual{,
       title = {extrasteps: More Miscellaneous Steps for the 'recipes' Package},
       author = {Emil Hvitfeldt},
       year = {2026},
-      note = {R package version 0.3.0.9000},
+      note = {R package version 0.3.1},
       url = {https://github.com/EmilHvitfeldt/extrasteps},
     }

@@ -1,6 +1,6 @@
 # Changelog
 
-## extrasteps (development version)
+## extrasteps 0.3.1
 
 - Examples and tests that rely on the suggested `almanac` package are
   now conditioned on it being installed, so the package no longer fails

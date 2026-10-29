@@ -104,7 +104,13 @@ offset to avoid `Inf`.
 
 The effect of `transform` is illustrated below.
 
-![](figures/date_before-1.png)![](figures/date_before-2.png)![](figures/date_before-3.png)![](figures/date_before-4.png)
+![](figures/date_before-1.png)
+
+![](figures/date_before-2.png)
+
+![](figures/date_before-3.png)
+
+![](figures/date_before-4.png)
 
 The naming of the resulting variables will be on the form
 
