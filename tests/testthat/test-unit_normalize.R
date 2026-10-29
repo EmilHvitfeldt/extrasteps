@@ -2,6 +2,7 @@ library(testthat)
 library(rlang)
 library(recipes)
 
+skip_if_not_installed("modeldata")
 library(modeldata)
 data(biomass)
 

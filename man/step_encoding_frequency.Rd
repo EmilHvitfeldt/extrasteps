@@ -53,6 +53,7 @@ columns \code{terms} (the columns that will be affected) and \code{base}.
 will perform frequency encoding.
 }
 \examples{
+\dontshow{if (rlang::is_installed("modeldata")) withAutoprint(\{ # examplesIf}
 library(recipes)
 library(modeldata)
 
@@ -66,4 +67,5 @@ rec \%>\%
   bake(new_data = NULL)
 
 tidy(rec, 1)
+\dontshow{\}) # examplesIf}
 }

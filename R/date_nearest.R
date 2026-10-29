@@ -39,7 +39,7 @@
 #' The effect of `transform` is illustrated below.
 #'
 #'
-#' ```{r date_nearest, echo=FALSE, message=FALSE}
+#' ```{r date_nearest, echo=FALSE, message=FALSE, eval = rlang::is_installed(c("almanac", "ggplot2", "dplyr"))}
 #' library(almanac)
 #' library(ggplot2)
 #' library(dplyr)
@@ -118,7 +118,7 @@
 #' {variable name}_nearest_{name of rule}
 #' ```
 #'
-#' @examplesIf rlang::is_installed("almanac")
+#' @examplesIf rlang::is_installed(c("almanac", "modeldata"))
 #' library(recipes)
 #' library(extrasteps)
 #' library(almanac)
@@ -150,6 +150,8 @@ step_date_nearest <-
     skip = FALSE,
     id = rand_id("date_nearest")
   ) {
+    recipes::recipes_pkg_check(required_pkgs.step_date_nearest())
+
     add_step(
       recipe,
       step_date_nearest_new(

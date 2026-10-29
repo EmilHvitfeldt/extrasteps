@@ -18,7 +18,7 @@
 #' original date variables by default. Set `keep_original_cols` to `FALSE` to
 #' remove them.
 #'
-#' @examplesIf rlang::is_installed("almanac")
+#' @examplesIf rlang::is_installed(c("almanac", "modeldata"))
 #' library(recipes)
 #' library(extrasteps)
 #' library(almanac)
@@ -49,6 +49,8 @@ step_time_event <-
     skip = FALSE,
     id = rand_id("time_event")
   ) {
+    recipes::recipes_pkg_check(required_pkgs.step_time_event())
+
     add_step(
       recipe,
       step_time_event_new(

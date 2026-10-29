@@ -57,6 +57,7 @@ columns \code{terms} (the columns that will be affected) and \code{base}.
 perform binary encoding of factor variables.
 }
 \examples{
+\dontshow{if (rlang::is_installed("modeldata")) withAutoprint(\{ # examplesIf}
 library(recipes)
 library(modeldata)
 
@@ -70,4 +71,5 @@ rec \%>\%
   bake(new_data = NULL)
 
 tidy(rec, 1)
+\dontshow{\}) # examplesIf}
 }

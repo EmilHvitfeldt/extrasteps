@@ -15,7 +15,7 @@
 #'   sequence of existing steps (if any). For the `tidy` method, a tibble with
 #'   columns `terms` (the columns that will be affected) and `base`.
 #' @export
-#' @examples
+#' @examplesIf rlang::is_installed("modeldata")
 #' library(recipes)
 #' library(modeldata)
 #'

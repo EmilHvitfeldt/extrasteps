@@ -37,7 +37,7 @@ resulting variables. See details for allowed names and their functions.}
 
 \item{columns}{A character string of variables that will be
 used as inputs. This field is a placeholder and will be
-populated once \code{\link[recipes:prep]{recipes::prep.recipe()}} is used.}
+populated once \code{\link[recipes:prep.recipe]{recipes::prep.recipe()}} is used.}
 
 \item{keep_original_cols}{A logical to keep the original variables in the
 output. Defaults to \code{FALSE}.}
@@ -79,7 +79,13 @@ function(x) log(x + 0.5)
 
 The effect of \code{transform} is illustrated below.
 
-\figure{date_before-1.png}\figure{date_before-2.png}\figure{date_before-3.png}\figure{date_before-4.png}
+\figure{date_before-1.png}
+
+\figure{date_before-2.png}
+
+\figure{date_before-3.png}
+
+\figure{date_before-4.png}
 
 The naming of the resulting variables will be on the form
 
@@ -87,7 +93,7 @@ The naming of the resulting variables will be on the form
 }\if{html}{\out{</div>}}
 }
 \examples{
-\dontshow{if (rlang::is_installed("almanac")) withAutoprint(\{ # examplesIf}
+\dontshow{if (rlang::is_installed(c("almanac", "modeldata"))) withAutoprint(\{ # examplesIf}
 library(recipes)
 library(extrasteps)
 library(almanac)
